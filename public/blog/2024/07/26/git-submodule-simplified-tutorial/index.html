@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Git Submodule Simplified Tutorial - Q</title>
+    <meta property="og:title" content="Git Submodule Simplified Tutorial - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the &amp;hellip;">
+      <meta property="og:description" content="For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
+
+  </head>
+  <body class="blog">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/blog/">Blog</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Git Submodule Simplified Tutorial</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-07-26
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>For clarity, we will refer to the local main module as the main module, the main module&rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the submodule&rsquo;s GitHub repository as the sub-repository.</p>
+<h3 id="adding-submodules-and-sub-repositories">Adding Submodules and Sub-repositories</h3>
+<ol>
+<li>Clone the main repository to your local machine:
+<pre><code>git clone &lt;main_repo_url&gt;
+</code></pre>
+</li>
+<li>Add the submodule within the main module:
+<pre><code>git submodule add &lt;submodule_url&gt; &lt;submodule_repo_name&gt;
+</code></pre>
+<ul>
+<li>If the submodule is successfully added, you will see a submodule folder inside the main module&rsquo;s directory and a <code>.gitmodules</code> file. Opening <code>.gitmodules</code>, you&rsquo;ll find the stored information about your submodule and sub-repository.</li>
+</ul>
+</li>
+<li>Push the local files of the main module to GitHub</li>
+</ol>
+<h3 id="updating-submodules-and-sub-repositories">Updating Submodules and Sub-repositories</h3>
+<p>Updates to the main repository and sub-repository do not automatically synchronize, so manual synchronization is required. Here are the two common scenarios:</p>
+<h4 id="updating-the-main-repository-based-on-the-sub-repository">Updating the Main Repository Based on the Sub-repository</h4>
+<ol>
+<li>If changes have been made to the submodule and pushed to the sub-repository, update the submodule in the main module with the following command:
+<pre><code>git submodule update --remote
+</code></pre>
+This will synchronize the local files with the latest submodule files.</li>
+<li>Push the updates to the main repository</li>
+</ol>
+<h4 id="updating-the-sub-repository-based-on-main-repository">Updating the Sub-repository Based on Main Repository</h4>
+<ol>
+<li>In the local submodule directory, use the following command to update the submodule:
+<pre><code>git submodule update
+</code></pre>
+This will update the local files based on the files committed in the main repository.</li>
+<li>Push the updates to the sub-repository</li>
+</ol>
+<h3 id="removing-submodules-and-sub-repositories">Removing Submodules and Sub-repositories</h3>
+<ol>
+<li>Deinitialize the submodule:
+<pre><code>git submodule deinit &lt;submodule-name&gt;
+</code></pre>
+</li>
+<li>Remove the submodule directory:
+<pre><code>git rm -r &lt;submodule-name&gt;
+</code></pre>
+</li>
+<li>Delete the submodule-related files in the <code>.git</code> directory (from the main module directory):
+<pre><code>rm -rf .git/modules/&lt;submodule-name&gt;
+</code></pre>
+<strong>Note</strong>: You can use the <code>-f</code> option to force deletion if necessary.</li>
+</ol>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev"></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://TriangleMesh.github.io/">Q</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

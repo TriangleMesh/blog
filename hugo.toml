@@ -35,11 +35,12 @@ footnotereturnlinkcontents = "↩"
     name = "About"
     url = "/about/"
     weight = 2
+    
 
 
 [params]
   # description abou this website
-  description = "Welcome to my blog! "
+  description = ""
   footer = "&copy; [Q](https://TriangleMesh.github.io/) | since 2024"
   highlightjsCDN = "//cdn.bootcss.com"
   highlightjsLang = ["r", "yaml", "tex"]

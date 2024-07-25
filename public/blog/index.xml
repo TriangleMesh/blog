@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Q</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Home on Q</description>
+    <title>Blogs on Q</title>
+    <link>http://localhost:1313/blog/</link>
+    <description>Recent content in Blogs on Q</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 26 Jul 2024 00:54:14 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git Submodule Simplified Tutorial</title>
       <link>http://localhost:1313/blog/2024/07/26/git-submodule-simplified-tutorial/</link>
       <pubDate>Fri, 26 Jul 2024 00:54:14 +0800</pubDate>
       <guid>http://localhost:1313/blog/2024/07/26/git-submodule-simplified-tutorial/</guid>
       <description>For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the submodule&amp;rsquo;s GitHub repository as the sub-repository.&#xA;Adding Submodules and Sub-repositories Clone the main repository to your local machine: git clone &amp;lt;main_repo_url&amp;gt; Add the submodule within the main module: git submodule add &amp;lt;submodule_url&amp;gt; &amp;lt;submodule_repo_name&amp;gt; If the submodule is successfully added, you will see a submodule folder inside the main module&amp;rsquo;s directory and a .</description>
-    </item>
-    <item>
-      <title>About me</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description> </description>
     </item>
   </channel>
 </rss>
