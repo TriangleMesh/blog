@@ -1,0 +1,69 @@
+baseURL = 'https://TriangleMesh.github.io/'
+languageCode = 'en-us'
+title = 'Q'
+theme = 'hugo-ivy'
+
+hasCJKLanguage = true
+enableEmoji = true
+footnotereturnlinkcontents = "↩"
+
+[permalinks]
+    blog = "/blog/:year/:month/:day/:slug/"
+
+
+[[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 1
+# [[menu.main]]
+#     name = "Life"
+#     url = "/life/"
+#     weight = 2
+# [[menu.main]]
+#     name = "Resource"
+#     url = "/resource/"
+#     weight = 2
+# [[menu.main]]
+#     name = "Categories"
+#     url = "/categories/"
+#     weight = 3
+# [[menu.main]]
+#     name = "Tags"
+#     url = "/tags/"
+#     weight = 4
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+
+[params]
+  # description abou this website
+  description = "Welcome to my blog! "
+  footer = "&copy; [Q](https://TriangleMesh.github.io/) | since 2024"
+  highlightjsCDN = "//cdn.bootcss.com"
+  highlightjsLang = ["r", "yaml", "tex"]
+  highlightjsTheme = "github"
+  highlightjsVersion = "9.12.0"
+
+
+
+## TBD
+[params.twikoo]
+	enable = true
+
+[blackfriday]
+extensionsmask = [ "noIntraEmphasis" ]
+fractions = false
+
+[markup.highlight]
+codeFences = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.goldmark.parser]
+autoHeadingIDType = "blackfriday"
+
+[markup.tableOfContents]
+startLevel = 1
