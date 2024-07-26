@@ -1,0 +1,5 @@
+{{ range .Site.Params.socialIcons }}
+  <a href="{{ .url }}" title="{{ .title }}" target="_blank">
+    <i class="{{ .icon }}"></i>
+  </a>
+{{ end }}

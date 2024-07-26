@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>How to Build a blog with Hugo and Github - Q</title>
+    <meta property="og:title" content="How to Build a blog with Hugo and Github - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="Note: Among these resources, the Hugo Official Documentation is particularly recommended because is up-to-date, pretty detailed and user-friendly, while other online tutorials may be outdated. By &amp;hellip;">
+      <meta property="og:description" content="Note: Among these resources, the Hugo Official Documentation is particularly recommended because is up-to-date, pretty detailed and user-friendly, while other online tutorials may be outdated. By &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  <head>
+    <meta charset="utf-8">
+    <title>How to Build a blog with Hugo and Github | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+  </head>
+  </head>
+  <body class="blog">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/blog/">Blog</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  <a href="https://github.com/TriangleMesh" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <a href="mailto:trianglemeshq@gmail.com" title="e-mail" target="_blank">
+    <i class="fas fa-envelope"></i>
+  </a>
+ 
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>How to Build a blog with Hugo and Github</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-07-26
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h2 id="why-i-use-hugo">Why I Use Hugo</h2>
+<ul>
+<li><strong>Easy to get started</strong>: Hugo offers a large number of pre-made templates, requiring little to no front-end knowledge, allowing for a quick setup of website.</li>
+<li><strong>Fast page loading speed</strong>: Compared to Hexo, which I used previously, Hugo generates pages significantly faster. This is because Hugo uses precompiled templates and minimal rendering and is written in Go which offers extremely high compilation speed and performance optimization.</li>
+<li><strong>Beautiful templates</strong>: Hugo’s templates are generally less flashy than Hexo’s. The Hugo template I am currently using is, in my opinion, the most well-designed one after reviewing numerous blogs.</li>
+<li><strong>Affinity with Go</strong>: My first web backend project was written in Go, so I have a special affinity for the language. Although using Hugo to build a blog doesn’t require much direct use of Go syntax, this connection still influenced my choice.</li>
+</ul>
+<h2 id="references-i-used-during-this-process">References I Used During This Process</h2>
+<ul>
+<li><strong><a href="https://gohugo.io/documentation/">Hugo Official Documentation</a></strong></li>
+<li><strong>Tutorials on setting up a website with GitHub and Hugo</strong></li>
+<li><strong>Blogs and repositories of other users using the same theme on GitHub</strong></li>
+<li><strong><a href="https://themes.gohugo.io/">Hugo Themes Official Website</a></strong></li>
+</ul>
+<blockquote>
+<p>Note: Among these resources, the <a href="https://gohugo.io/documentation/">Hugo Official Documentation</a> is particularly recommended because is up-to-date, pretty detailed and user-friendly, while other online tutorials may be outdated. By simply following the <a href="https://gohugo.io/getting-started/quick-start/">Quick Start</a>, you can set up the blog framework. Afterwards, you can modify theme files according to your needs, focusing initially on the <code>config.toml</code> and <code>content</code> folders, while using <code>hugo server</code> to preview the changes locally.</p>
+</blockquote>
+<h2 id="file-structure">File Structure</h2>
+<blockquote>
+<p>For more information, you can also refer to <a href="https://gohugo.io/getting-started/directory-structure/">Hugo document - Directory structure</a></p>
+</blockquote>
+<h3 id="content-and-public"><code>content</code> and <code>public</code></h3>
+<ul>
+<li>The <code>content</code> folder contains the original Markdown files of the blog.</li>
+<li>The <code>public</code> folder contains HTML files automatically generated by Hugo based on the Markdown files, which will later be pushed to a GitHub repository named <code>&lt;replace_with_your_github_username&gt;.github.io</code>.</li>
+<li>Since the files in the <code>public</code> folder are automatically generated, there is generally no need to manually modify the HTML files in this folder. Running <code>hugo</code> will automatically convert newly added files. However, simply deleting files in the <code>content</code> folder will not automatically delete the corresponding old HTML files in the <code>public</code> folder. Although not deleting them may not affect the display, it can make the overall project structure less clean. My approach is to delete all files under the <code>public</code> directory except for the <code>.git</code> file, and let Hugo to regenerate the HTML files based on my current content.</li>
+</ul>
+<h3 id="themes"><code>themes</code></h3>
+<ul>
+<li>The <code>themes</code> folder contains Hugo’s theme files, which include:
+<ul>
+<li>The <code>exampleSite</code> folder. This folder contains sample site information. It is recommended to copy the <code>.toml</code> file, as well as the <code>content</code> and <code>static</code> folders, to the corresponding locations in your blog project for testing.</li>
+<li>The <code>layouts</code> and <code>static</code> folders. These folders contain HTML and CSS files for building the website structure and rendering effects. Later, you can modify these files, as well as other configuration files in your blog project, to adjust the layout and style of the website.</li>
+</ul>
+</li>
+</ul>
+<h2 id="github-repository">GitHub Repository</h2>
+<h3 id="create-repositories">Create Repositories</h3>
+<ul>
+<li>
+<p>If you use GitHub to host your project files, generally three repositories are needed:</p>
+<ol>
+<li>A repository to store all the site information (the repository name can be arbitrary).</li>
+<li>A repository to store the HTML files in the <code>public</code> folder, named <code>&lt;replace_with_your_github_username&gt;.github.io</code>. The repository name must be set to <code>&lt;replace_with_your_github_username&gt;.github.io</code>, and it will be the URL of your future blog.</li>
+<li>A theme repository (optional). Although many tutorials suggest directly using the original theme repository, I forked the theme repository to my own, making it easier to manage and maintain.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>In these three repositories, the first repository is the main repository for the second and third repositories. It is recommended to use submodules to manage the three repositories. For more information on submodules, you can refer to my other <a href="https://trianglemesh.github.io/blog/2024/07/26/git-submodule-simplified-tutorial/">blog post</a>. Alternatively, you can manage them directly by cloning the second and third repositories into the first repository.</p>
+</blockquote>
+<h3 id="using-github-actions-for-automated-deployment">Using GitHub Actions for Automated Deployment</h3>
+<ul>
+<li>Since manually pushing files can be cumbersome, we can also use GitHub Actions for automated deployment. This way, GitHub will automatically regenerate and deploy the website files every time we push updates.</li>
+</ul>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/blog/2024/07/26/git-submodule-simplified-tutorial/">Git Submodule Simplified Tutorial</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://TriangleMesh.github.io/">Q</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

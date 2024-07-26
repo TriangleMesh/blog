@@ -1,7 +1,7 @@
 ---
-title: About me
-author: Q
-date: '2024-07-25'
+title: About
+# author: Q
+# date: '2024-07-25'
 ---
 <!-- 
 This Hugo theme was ported from [Ivy](https://github.com/dmulholland/ivy), a minimalist website generator built in Python. I don't have time to document this theme. You have to read the source code to understand what it can do. All I can say for now is that I love it. It is clean, minimal, and responsive.

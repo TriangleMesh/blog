@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Q</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Jul 2024 00:54:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jul 2024 19:47:00 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Build a blog with Hugo and Github</title>
+      <link>http://localhost:1313/blog/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</link>
+      <pubDate>Fri, 26 Jul 2024 19:47:00 +0800</pubDate>
+      <guid>http://localhost:1313/blog/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</guid>
+      <description>Why I Use Hugo Easy to get started: Hugo offers a large number of pre-made templates, requiring little to no front-end knowledge, allowing for a quick setup of website. Fast page loading speed: Compared to Hexo, which I used previously, Hugo generates pages significantly faster. This is because Hugo uses precompiled templates and minimal rendering and is written in Go which offers extremely high compilation speed and performance optimization. Beautiful templates: Hugo’s templates are generally less flashy than Hexo’s.</description>
+    </item>
     <item>
       <title>Git Submodule Simplified Tutorial</title>
       <link>http://localhost:1313/blog/2024/07/26/git-submodule-simplified-tutorial/</link>
