@@ -1,5 +1,5 @@
 +++
-title = 'How to Build a blog with Hugo and Github'
+title = 'How to Build a Blog with Hugo and Github'
 date = 2024-07-26T19:47:00+08:00
 # draft = true
 +++

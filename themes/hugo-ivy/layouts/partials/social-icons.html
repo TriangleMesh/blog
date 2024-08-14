@@ -1,5 +1,15 @@
-{{ range .Site.Params.socialIcons }}
-  <a href="{{ .url }}" title="{{ .title }}" target="_blank">
-    <i class="{{ .icon }}"></i>
-  </a>
-{{ end }}
+<div style="text-align: right; text-decoration: none">
+  <style>
+    .socialIcon {
+      font-size: 30px; 
+      text-decoration: none; 
+      display: inline-block; 
+      margin-left: 10px;
+    }
+  </style>
+  {{ range .Site.Params.socialIcons }}
+    <a href="{{ .url }}" class="socialIcon" title="{{ .title }}" target="_blank">
+      <i class="{{ .icon }}"></i>
+    </a>
+  {{ end }}
+</div>
