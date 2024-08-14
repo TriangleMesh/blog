@@ -50,6 +50,11 @@
     {{ partial "head_highlightjs" . }}
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "/css/fonts.css" | relURL }}" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
     {{ partial "head_custom.html" . }}
   </head>
 
@@ -59,10 +64,14 @@
     <header class="masthead">
       {{ partialCached "tagline.html" . $section }}
       {{ partial "menu.html" . }}
-      {{ partial "social-icons.html" . }}
     </header>
 
     <article class="main">
       <header class="title">
       {{ partial "meta.html" . }}
+
+      <div class="description">
+        {{ .Site.Params.description | safeHTML }}
+      </div>
+      
       </header>

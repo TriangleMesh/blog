@@ -41,7 +41,8 @@ footnotereturnlinkcontents = "↩"
 [params]
   # description abou this website
   description = ""
-  footer = "&copy; [Q](https://TriangleMesh.github.io/) | since 2024"
+#   footer = "&copy; [Q](https://TriangleMesh.github.io/) | [<img src='https://simpleicons.org/icons/github.svg' style='text-decoration: none !important; width: 15px; height: 15px;' alt='Github'>](https://github.com/TriangleMesh) | [Email](mailto:trianglemeshq@gmail.com) | since 2024"
+  footer = "&copy; <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024"
   highlightjsCDN = "//cdn.bootcss.com"
   highlightjsLang = ["r", "yaml", "tex"]
   highlightjsTheme = "github"
@@ -69,16 +70,3 @@ autoHeadingIDType = "blackfriday"
 [markup.tableOfContents]
 startLevel = 1
 
-
-## Social links
-# use 'fab' when brand icons, use 'fas' when standard solid icons.
-
-[[params.socialIcons]]
-icon = "fab fa-github"
-title = "GitHub"
-url = "https://github.com/TriangleMesh"
-
-[[params.socialIcons]]
-icon = "fas fa-envelope"
-title = "e-mail"
-url = "mailto:trianglemeshq@gmail.com"
