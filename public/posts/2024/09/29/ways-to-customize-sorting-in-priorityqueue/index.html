@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Ways to Customize Sorting in PriorityQueue - Q</title>
+    <meta property="og:title" content="Ways to Customize Sorting in PriorityQueue - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="By default, Java&amp;rsquo;s PriorityQueue uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and &amp;hellip;">
+      <meta property="og:description" content="By default, Java&amp;rsquo;s PriorityQueue uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>Ways to Customize Sorting in PriorityQueue | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+  </head>
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Ways to Customize Sorting in PriorityQueue</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-09-29
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<p>By default, Java&rsquo;s <code>PriorityQueue</code> uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and their solutions.</p>
+<h3 id="1-implementing-the-comparable-interface">1. Implementing the <code>Comparable</code> Interface</h3>
+<p>Allow the object to implement the <code>Comparable</code> interface and override the <code>compareTo()</code> method to define the natural sorting order of the object. This is suitable for cases where a &ldquo;natural order&rdquo; exists.</p>
+<pre><code class="language-java">class Student implements Comparable&lt;Student&gt; {
+    private int age;
+
+    public Student(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return Integer.compare(this.age, other.age);
+    }
+}
+
+PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;();
+students.add(new Student(20));
+students.add(new Student(18));
+students.add(new Student(22));
+
+while (!students.isEmpty()) {
+    System.out.println(students.poll().getAge());  // Output order: 18, 20, 22
+}
+</code></pre>
+<h3 id="2-using-the-comparator-interface">2. Using the <code>Comparator</code> Interface</h3>
+<p>Pass a custom <code>Comparator</code> object when constructing the <code>PriorityQueue</code> to implement custom sorting logic.</p>
+<pre><code class="language-java">PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;(new Comparator&lt;Student&gt;() {
+    @Override
+    public int compare(Student s1, Student s2) {
+        return Integer.compare(s1.getAge(), s2.getAge());
+    }
+});
+</code></pre>
+<h3 id="3-using-lambda-expressions">3. Using Lambda Expressions</h3>
+<p>In Java 8 and later versions, you can simplify the <strong><code>Comparator</code></strong> using lambda expressions.  Note that <code>Comparable</code> must be implemented inside the class and cannot be expressed using lambda expressions.</p>
+<pre><code class="language-java">PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;(
+    (s1, s2) -&gt; Integer.compare(s1.getAge(), s2.getAge())
+);
+</code></pre>
+<p>Or:</p>
+<pre><code class="language-java">PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;(
+    Comparator.comparingInt(Student::getAge)
+);
+</code></pre>
+<h3 id="note-handling-primitive-types-and-wrapper-types-in-comparisons">Note: Handling Primitive Types and Wrapper Types in Comparisons</h3>
+<p>When performing comparisons, if you are using primitive types (e.g., <code>int</code>), you cannot directly call methods like <code>compareTo()</code> because primitive types do not have methods. You need to use wrapper types (e.g., <code>Integer</code>) or static comparison methods to handle this.</p>
+<h4 id="common-error-analysis">Common Error Analysis</h4>
+<p>The following code will lead to a compilation error:</p>
+<pre><code class="language-java">class Student {
+    private int age;
+
+    public Student(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;((s1, s2) -&gt; {
+    return s1.getAge().compareTo(s2.getAge());
+});
+</code></pre>
+<p><strong>Error Reason:</strong> The <code>getAge()</code> method returns an <code>int</code>, which is a primitive type and cannot call the <code>compareTo()</code> method. The compiler will throw the error: &ldquo;<code>int cannot be dereferenced</code>.&rdquo;</p>
+<h4 id="solutions">Solutions:</h4>
+<ol>
+<li><strong>Change <code>age</code> to the wrapper type <code>Integer</code>:</strong></li>
+</ol>
+<pre><code class="language-java">class Student {
+    private Integer age;
+
+    public Student(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+}
+</code></pre>
+<p>This way, <code>getAge()</code> returns an <code>Integer</code>, and you can call the <code>compareTo()</code> method.</p>
+<ol start="2">
+<li><strong>Use the <code>Integer.compare(int x, int y)</code> method without modifying the <code>age</code> type:</strong></li>
+</ol>
+<pre><code class="language-java">PriorityQueue&lt;Student&gt; students = new PriorityQueue&lt;&gt;((s1, s2) -&gt; {
+    return Integer.compare(s1.getAge(), s2.getAge());
+});
+</code></pre>
+<p>Or:</p>
+<pre><code class="language-java">PriorityQueue&lt;Student&gt; students = a new PriorityQueue&lt;&gt;(
+    Comparator.comparingInt(Student::getAge)
+);
+</code></pre>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/">MIPS Instruction Set and Machine Code Generation</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

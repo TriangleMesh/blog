@@ -8,12 +8,12 @@ enableEmoji = true
 footnotereturnlinkcontents = "↩"
 
 [permalinks]
-    blog = "/blog/:year/:month/:day/:slug/"
+    posts = "/posts/:year/:month/:day/:slug/"
 
 
 [[menu.main]]
-    name = "Blog"
-    url = "/blog/"
+    name = "Posts"
+    url = "/posts/"
     weight = 1
 # [[menu.main]]
 #     name = "Life"
@@ -41,7 +41,6 @@ footnotereturnlinkcontents = "↩"
 [params]
   # description abou this website
   description = ""
-#   footer = "&copy; [Q](https://TriangleMesh.github.io/) | [<img src='https://simpleicons.org/icons/github.svg' style='text-decoration: none !important; width: 15px; height: 15px;' alt='Github'>](https://github.com/TriangleMesh) | [Email](mailto:trianglemeshq@gmail.com) | since 2024"
   footer = "&copy; <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024"
   highlightjsCDN = "//cdn.bootcss.com"
   highlightjsLang = ["r", "yaml", "tex"]

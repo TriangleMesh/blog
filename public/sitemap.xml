@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-07-26T19:47:00+08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2024-09-29T16:24:31-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-09-29T16:24:31-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</loc>
+    <lastmod>2024-09-29T16:24:31-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/</loc>
+    <lastmod>2024-09-29T16:07:04-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</loc>
     <lastmod>2024-07-26T19:47:00+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</loc>
-    <lastmod>2024-07-26T19:47:00+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/2024/07/26/git-submodule-simplified-tutorial/</loc>
+    <loc>http://localhost:1313/posts/2024/07/26/git-submodule-simplified-tutorial/</loc>
     <lastmod>2024-07-26T00:54:14+08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>

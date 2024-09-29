@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>MIPS Instruction Set and Machine Code Generation - Q</title>
+    <meta property="og:title" content="MIPS Instruction Set and Machine Code Generation - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="The MIPS instruction set consists of 32-bit fixed-length instructions, divided into several types, each with a specific field format.
+[&amp;hellip;] R-type Instructions: Used for operations between &amp;hellip;">
+      <meta property="og:description" content="The MIPS instruction set consists of 32-bit fixed-length instructions, divided into several types, each with a specific field format.
+[&amp;hellip;] R-type Instructions: Used for operations between &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>MIPS Instruction Set and Machine Code Generation | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+  </head>
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>MIPS Instruction Set and Machine Code Generation</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-09-29
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<h3 id="overview-of-the-mips-instruction-set">Overview of the MIPS Instruction Set</h3>
+<p>The MIPS instruction set consists of <strong>32-bit fixed-length instructions</strong>, divided into several types, each with a specific field format.</p>
+<h3 id="main-instruction-types">Main Instruction Types:</h3>
+<ul>
+<li>
+<p><strong>R-type Instructions</strong>: Used for operations between registers.</p>
+<ul>
+<li><code>opcode | rs | rt | rd | shamt | funct</code></li>
+</ul>
+</li>
+<li>
+<p><strong>I-type Instructions</strong>: Used for operations between registers and immediate values or for memory access.</p>
+<ul>
+<li><code>opcode | rs | rt | immediate</code></li>
+</ul>
+</li>
+<li>
+<p><strong>J-type Instructions</strong>: Used for jump operations.</p>
+<ul>
+<li><code>opcode | address</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Branch Instructions</strong>: A subtype of I-type instructions, used for conditional jumps.</p>
+<ul>
+<li><code>opcode | rs | rt | offset</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="r-type-instructions">R-type Instructions</h3>
+<p><strong>R-type instructions</strong> are used for operations between <strong>registers</strong>, where both operands and the result are stored in registers. They are commonly used for arithmetic and logical operations.</p>
+<h4 id="format">Format:</h4>
+<pre><code>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | rd (5 bits) | shamt (5 bits) | funct (6 bits) |
+</code></pre>
+<ul>
+<li><strong>opcode</strong>: The operation code, fixed as <code>000000</code>.</li>
+<li><strong>rs</strong>: Source register 1.</li>
+<li><strong>rt</strong>: Source register 2.</li>
+<li><strong>rd</strong>: Destination register.</li>
+<li><strong>shamt</strong>: Shift amount, set to <code>00000</code> for non-shift operations.</li>
+<li><strong>funct</strong>: Function code, specifying the exact operation.</li>
+</ul>
+<h4 id="example-add-s0-t0-t1">Example: <code>add $s0, $t0, $t1</code></h4>
+<p>This instruction adds <code>$t0</code> and <code>$t1</code>, storing the result in <code>$s0</code>.</p>
+<ul>
+<li><strong>opcode</strong>: <code>000000</code></li>
+<li><strong>rs</strong>: <code>$t0</code> (<code>01000</code>)</li>
+<li><strong>rt</strong>: <code>$t1</code> (<code>01001</code>)</li>
+<li><strong>rd</strong>: <code>$s0</code> (<code>10000</code>)</li>
+<li><strong>shamt</strong>: <code>00000</code></li>
+<li><strong>funct</strong>: <code>100000</code> (Addition)</li>
+</ul>
+<p><strong>Machine code:</strong></p>
+<pre><code>000000 01000 01001 10000 00000 100000
+</code></pre>
+<p><strong>Hexadecimal representation:</strong> <code>0x01098020</code></p>
+<h3 id="i-type-instructions">I-type Instructions</h3>
+<p><strong>I-type instructions</strong> are used for operations between <strong>registers</strong> and <strong>immediate values</strong>, or for <strong>loading and storing</strong> memory operations. These instructions contain a 16-bit immediate value or address offset.</p>
+<h4 id="format-1">Format:</h4>
+<pre><code>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | immediate (16 bits) |
+</code></pre>
+<ul>
+<li><strong>opcode</strong>: The operation code, specifying the instruction type.</li>
+<li><strong>rs</strong>: Source register or base register.</li>
+<li><strong>rt</strong>: Destination register.</li>
+<li><strong>immediate</strong>: Immediate value or address offset.</li>
+</ul>
+<h4 id="example-1-addi-t0-0-10">Example 1: <code>addi $t0, $0, 10</code></h4>
+<p>This instruction adds the immediate value <code>10</code> to <code>$0</code> (which is always 0), storing the result in <code>$t0</code>.</p>
+<ul>
+<li><strong>opcode</strong>: <code>001000</code> (<code>addi</code>)</li>
+<li><strong>rs</strong>: <code>$0</code> (<code>00000</code>)</li>
+<li><strong>rt</strong>: <code>$t0</code> (<code>01000</code>)</li>
+<li><strong>immediate</strong>: <code>0000000000001010</code> (binary for 10)</li>
+</ul>
+<p><strong>Machine code:</strong></p>
+<pre><code>001000 00000 01000 0000000000001010
+</code></pre>
+<p><strong>Hexadecimal representation:</strong> <code>0x2008000A</code></p>
+<p><strong>Note:</strong> While the assembly format for <code>addi $t0, $0, 10</code> places the destination register <code>$t0</code> before the source register <code>$0</code>, the machine code is generated in the order <code>opcode | rs | rt | immediate</code>, where the source register (<code>rs</code>) comes before the destination register (<code>rt</code>). This design difference is based on architectural considerations.</p>
+<h4 id="example-2-lw-t0-4-t1">Example 2: <code>lw $t0, 4($t1)</code></h4>
+<p>This instruction loads a word from the address <code>$t1 + 4</code> into <code>$t0</code>.</p>
+<ul>
+<li><strong>opcode</strong>: <code>100011</code> (<code>lw</code>)</li>
+<li><strong>rs</strong>: <code>$t1</code> (<code>01001</code>)</li>
+<li><strong>rt</strong>: <code>$t0</code> (<code>01000</code>)</li>
+<li><strong>immediate</strong>: <code>0000000000000100</code> (binary for 4)</li>
+</ul>
+<p><strong>Machine code:</strong></p>
+<pre><code>100011 01001 01000 0000000000000100
+</code></pre>
+<p><strong>Hexadecimal representation:</strong> <code>0x8D280004</code></p>
+<h3 id="j-type-instructions">J-type Instructions</h3>
+<p><strong>J-type instructions</strong> are used for unconditional jumps to a specified address.</p>
+<h4 id="format-2">Format:</h4>
+<pre><code>| opcode (6 bits) | address (26 bits) |
+</code></pre>
+<ul>
+<li><strong>opcode</strong>: The operation code, indicating a jump instruction.</li>
+<li><strong>address</strong>: The target address (excluding the upper 4 bits and lower 2 bits).</li>
+</ul>
+<h4 id="example-j-0x00400000">Example: <code>j 0x00400000</code></h4>
+<p>This instruction jumps unconditionally to the address <code>0x00400000</code>.</p>
+<ul>
+<li><strong>opcode</strong>: <code>000010</code> (<code>j</code>)</li>
+<li><strong>address</strong>: <code>00000000010000000000000000</code></li>
+</ul>
+<p><strong>Machine code:</strong></p>
+<pre><code>000010 00000000010000000000000000
+</code></pre>
+<p><strong>Hexadecimal representation:</strong> <code>0x08000000</code></p>
+<h3 id="branch-instructions">Branch Instructions</h3>
+<p><strong>Branch instructions</strong> are used for conditional jumps and are commonly found in control flow for conditions and loops.</p>
+<h4 id="format-3">Format:</h4>
+<pre><code>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | offset (16 bits) |
+</code></pre>
+<ul>
+<li><strong>opcode</strong>: The operation code, indicating the branch type (e.g., <code>beq</code>, <code>bne</code>).</li>
+<li><strong>rs</strong>: Source register 1.</li>
+<li><strong>rt</strong>: Source register 2.</li>
+<li><strong>offset</strong>: The offset, relative to the next instruction&rsquo;s address.</li>
+</ul>
+<h4 id="example-beq-t0-t1-label">Example: <code>beq $t0, $t1, label</code></h4>
+<p>If <code>$t0</code> equals <code>$t1</code>, this instruction branches to <code>label</code>.</p>
+<ul>
+<li><strong>opcode</strong>: <code>000100</code> (<code>beq</code>)</li>
+<li><strong>rs</strong>: <code>$t0</code> (<code>01000</code>)</li>
+<li><strong>rt</strong>: <code>$t1</code> (<code>01001</code>)</li>
+<li><strong>offset</strong>: <code>0000000000000010</code> (assuming an offset of 2)</li>
+</ul>
+<p><strong>Machine code:</strong></p>
+<pre><code>000100 01000 01001 0000000000000010
+</code></pre>
+<p><strong>Hexadecimal representation:</strong> <code>0x11090002</code></p>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/">How to Build a Blog with Hugo and Github</a></span>
+  <span class="nav-next"><a href="/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/">Ways to Customize Sorting in PriorityQueue</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+
