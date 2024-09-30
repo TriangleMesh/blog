@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Understanding Registers and Common Operations in MIPS Assembly - Q</title>
+    <meta property="og:title" content="Understanding Registers and Common Operations in MIPS Assembly - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="MIPS provides 32 general-purpose registers that are divided into different categories based on their use.
+[&amp;hellip;] Purpose: $t0 to $t9 are temporary registers used to store temporary data. Their &amp;hellip;">
+      <meta property="og:description" content="MIPS provides 32 general-purpose registers that are divided into different categories based on their use.
+[&amp;hellip;] Purpose: $t0 to $t9 are temporary registers used to store temporary data. Their &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>Understanding Registers and Common Operations in MIPS Assembly | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+  </head>
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Understanding Registers and Common Operations in MIPS Assembly</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-09-30
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<h2 id="1-types-of-registers-in-mips-assembly">1. Types of Registers in MIPS Assembly</h2>
+<p>MIPS provides 32 general-purpose registers that are divided into different categories based on their use.</p>
+<h3 id="1-1-temporary-registers-t0-t9">1.1 Temporary Registers ($t0 - $t9)</h3>
+<p><strong>Purpose</strong>: <code>$t0</code> to <code>$t9</code> are temporary registers used to store temporary data. Their values do not need to be preserved across function calls, meaning they may be overwritten during the execution of a function.</p>
+<p><strong>Use case</strong>:<br>
+• Short-term computation results: Used to store intermediate results or temporary variables.<br>
+• Local operations: Used within the current code block, with no need to preserve their values after a function call.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">addi $t0, $0, 10  # Store 10 in $t0
+</code></pre>
+<h3 id="1-2-saved-registers-s0-s7">1.2 Saved Registers ($s0 - $s7)</h3>
+<p><strong>Purpose</strong>: <code>$s0</code> to <code>$s7</code> are saved registers, used to store data that must be preserved across function calls. Both the caller and callee are responsible for ensuring that the values in these registers remain unchanged before and after a function call.</p>
+<p><strong>Use case</strong>: Suitable for storing global variables or data that needs to persist across function calls.<br>
+• Long-term variable storage: When a variable needs to be shared or retained across multiple functions, it should be stored in an <code>$s</code> register.<br>
+• Data across function calls: Any data that must be preserved before calling other functions should be placed in an <code>$s</code> register.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">addi $s0, $zero, 100  # Store 100 in $s0
+</code></pre>
+<h3 id="1-3-argument-registers-a0-a3">1.3 Argument Registers ($a0 - $a3)</h3>
+<p><strong>Purpose</strong>: <code>$a0</code> to <code>$a3</code> are argument registers, used to pass parameters during function calls. In system calls, these registers are also used to pass arguments.</p>
+<p><strong>Use case</strong>:<br>
+• Before function calls: Store the arguments to be passed to the called function in <code>$a0</code> to <code>$a3</code>.<br>
+• Before system calls: Store the parameters to be passed (such as the address of a string to print or an integer) in <code>$a0</code>.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">li $a0, 5  # Pass 5 as an argument
+</code></pre>
+<h3 id="1-4-return-value-registers-v0-v1">1.4 Return Value Registers ($v0 - $v1)</h3>
+<p><strong>Purpose</strong>: <code>$v0</code> and <code>$v1</code> are return value registers, used to store function return values. In system calls, <code>$v0</code> is also used to specify the system call number.</p>
+<p><strong>Use case</strong>:<br>
+• Before returning from a function: Store the return value in <code>$v0</code> (if there is a second return value, use <code>$v1</code>).<br>
+• Before a system call: Store the system call number in <code>$v0</code>.<br>
+• After a system call: The result of the system call (such as a value read) is stored in <code>$v0</code>.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">li $v0, 1      # System call 1: Print integer
+move $a0, $s0  # Pass the integer to be printed in $a0
+syscall        # Execute the system call
+</code></pre>
+<h3 id="1-5-special-purpose-registers">1.5 Special Purpose Registers</h3>
+<ul>
+<li><strong>$zero ($0)</strong>: Constantly holds the value 0 and is commonly used in operations requiring a value of 0.</li>
+<li><strong>$at</strong>: Reserved for the assembler and not generally used in direct coding.</li>
+<li><strong>$k0 and $k1</strong>: Reserved for the operating system, primarily used for exception handling.</li>
+<li><strong>$gp</strong>: Global pointer register, used to access global data.</li>
+<li><strong>$sp</strong>: Stack pointer, points to the current top of the stack.</li>
+<li><strong>$fp</strong>: Frame pointer, points to the current stack frame.</li>
+<li><strong>$ra</strong>: Return address register, holds the return address for functions.</li>
+<li><strong>hi and lo</strong>: Used to store the high and low results of multiplication and division operations.</li>
+</ul>
+<h2 id="2-common-operations-in-mips-assembly">2. Common Operations in MIPS Assembly</h2>
+<h3 id="2-1-immediate-operations">2.1 Immediate Operations</h3>
+<p>The <code>addi</code> instruction is used to add an immediate value to a register, with the result stored in the destination register.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">addi $t0, $zero, 10  # $t0 = $zero + 10
+</code></pre>
+<h3 id="2-2-register-addition">2.2 Register Addition</h3>
+<p>The <code>add</code> instruction is used to add the values of two registers and store the result in a destination register.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">add $s0, $t0, $t1  # $s0 = $t0 + $t1
+</code></pre>
+<h3 id="2-3-system-call-operations">2.3 System Call Operations</h3>
+<p>The <code>syscall</code> instruction is used to make system calls. The system call number is specified in <code>$v0</code>, with arguments passed through <code>$a0</code> to <code>$a3</code>. The return value, if any, is stored in <code>$v0</code>.</p>
+<p><strong>Example</strong>: Print an integer</p>
+<pre><code class="language-asm">li $v0, 1      # System call 1: Print integer
+li $a0, 42     # Store 42 in $a0
+syscall        # Execute the system call, printing 42
+</code></pre>
+<h3 id="2-4-printing-an-integer">2.4 Printing an Integer</h3>
+<p>Use system call number <code>1</code> to print an integer. The integer value is passed via <code>$a0</code>.</p>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-asm">li $v0, 1      # System call 1: Print integer
+move $a0, $s0  # Move the value of $s0 into $a0
+syscall        # Execute the system call
+</code></pre>
+<h3 id="2-5-printing-a-string">2.5 Printing a String</h3>
+<p>Use system call number <code>4</code> to print a string. The address of the string is passed via <code>$a0</code>.</p>
+<p><strong>Example</strong>: Print a space and a newline</p>
+<pre><code class="language-asm">.data
+space:    .asciiz &quot; &quot;    # Define a space character
+newline:  .asciiz &quot;\n&quot;   # Define a newline character
+
+.text
+li $v0, 4          # System call 4: Print string
+la $a0, space      # Load the address of the space into $a0
+syscall            # Print space
+
+li $v0, 4          # System call to print newline
+la $a0, newline
+syscall
+</code></pre>
+<h3 id="2-6-printing-multiple-integers">2.6 Printing Multiple Integers</h3>
+<p><strong>Example</strong>: Print two integers with a space between them</p>
+<pre><code class="language-asm">.data
+space:    .asciiz &quot; &quot;
+
+.text
+# Assume $s0 and $s1 contain the integers to be printed
+li $v0, 1          # Print the first integer
+move $a0, $s0
+syscall
+
+li $v0, 4          # Print space
+la $a0, space
+syscall
+
+li $v0, 1          # Print the second integer
+move $a0, $s1
+syscall
+</code></pre>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/">Ways to Customize Sorting in PriorityQueue</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+
