@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Standard Deviation Calculation for Common Probability Distributions - Q</title>
+    <meta property="og:title" content="Standard Deviation Calculation for Common Probability Distributions - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="The binomial distribution applies to independent repeated trials where each trial has only two possible outcomes (success or failure). Let the probability of success in each trial be ( p ), the &amp;hellip;">
+      <meta property="og:description" content="The binomial distribution applies to independent repeated trials where each trial has only two possible outcomes (success or failure). Let the probability of success in each trial be ( p ), the &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>Standard Deviation Calculation for Common Probability Distributions | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Standard Deviation Calculation for Common Probability Distributions</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-10-21
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<h2 id="1-binomial-distribution">1. Binomial Distribution</h2>
+<h3 id="definition">Definition:</h3>
+<p>The binomial distribution applies to independent repeated trials where each trial has only two possible outcomes (success or failure). Let the probability of success in each trial be ( p ), the probability of failure be ( 1 - p ), and the number of trials be ( n ).</p>
+<h3 id="standard-deviation-formula">Standard Deviation Formula:</h3>
+<p>$$
+[
+\sigma = \sqrt{n \cdot p \cdot (1 - p)}
+]
+$$</p>
+<h3 id="explanation">Explanation:</h3>
+<ul>
+<li>( n ): The number of trials.</li>
+<li>( p ): The probability of success.</li>
+<li>( 1 - p ): The probability of failure.</li>
+</ul>
+<h3 id="example">Example:</h3>
+<p>Suppose you toss a fair coin ( n ) times and calculate the standard deviation for the number of heads (success).</p>
+<ul>
+<li>( n = 10 )</li>
+<li>( p = 0.5 )</li>
+<li>( 1 - p = 0.5 )</li>
+</ul>
+<p><strong>Calculation:</strong></p>
+<p>$$
+<br>
+\sigma = \sqrt{10 \cdot 0.5 \cdot 0.5} = \sqrt{2.5} \approx 1.58
+<br>
+$$</p>
+<hr>
+<h2 id="2-hypergeometric-distribution">2. Hypergeometric Distribution</h2>
+<h3 id="definition-1">Definition:</h3>
+<p>The hypergeometric distribution describes sampling without replacement from a finite population. The population size is ( N ), where ( K ) items are considered successes (e.g., red balls), and the remaining ( N - K ) are failures (e.g., blue balls). A sample of ( n ) is drawn, and we focus on the number of successes in the sample.</p>
+<h3 id="standard-deviation-formula-1">Standard Deviation Formula:</h3>
+<p>[
+\sigma = \sqrt{n \cdot \frac{K}{N} \cdot \frac{N - K}{N} \cdot \frac{N - n}{N - 1}}
+]</p>
+<h3 id="explanation-1">Explanation:</h3>
+<ul>
+<li>( N ): The population size.</li>
+<li>( K ): The number of successes.</li>
+<li>( n ): The sample size.</li>
+</ul>
+<h3 id="example-1">Example:</h3>
+<p>Suppose there are ( N = 20 ) balls, of which ( K = 5 ) are red, and the remaining are blue. You draw ( n = 4 ) balls. The standard deviation of the number of red balls in the sample is:</p>
+<p><strong>Calculation:</strong></p>
+<p>[
+\sigma = \sqrt{4 \cdot \frac{5}{20} \cdot \frac{15}{20} \cdot \frac{16}{19}} \approx 0.87
+]</p>
+<hr>
+<h2 id="3-normal-distribution">3. Normal Distribution</h2>
+<h3 id="definition-2">Definition:</h3>
+<p>The normal distribution is a key continuous probability distribution, and many natural phenomena approximately follow it. The standard deviation measures the spread of data around the mean.</p>
+<h3 id="standard-deviation-formula-for-sample-data">Standard Deviation Formula for Sample Data:</h3>
+<p>\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}\</p>
+<h3 id="explanation-2">Explanation:</h3>
+<ul>
+<li>( x_i ): The ( i )-th data point.</li>
+<li>( \mu ): The mean of the data.</li>
+<li>( n ): The number of data points.</li>
+</ul>
+<h3 id="example-2">Example:</h3>
+<p>Suppose you have a set of measurements: ( x_1 = 1, x_2 = 2, x_3 = 3, x_4 = 4, x_5 = 5 ).</p>
+<p><strong>Mean Calculation:</strong></p>
+<p>[
+\mu = \frac{1 + 2 + 3 + 4 + 5}{5} = 3
+]</p>
+<p><strong>Standard Deviation Calculation:</strong></p>
+<p>[
+\sigma = \sqrt{\frac{(1-3)^2 + (2-3)^2 + (3-3)^2 + (4-3)^2 + (5-3)^2}{5}} = \sqrt{2} \approx 1.41
+]</p>
+<hr>
+<h2 id="4-poisson-distribution">4. Poisson Distribution</h2>
+<h3 id="definition-3">Definition:</h3>
+<p>The Poisson distribution is used to describe the number of events occurring within a fixed interval of time or space, with the parameter ( \lambda ), which represents the average number of occurrences.</p>
+<h3 id="standard-deviation-formula-2">Standard Deviation Formula:</h3>
+<p>[
+\sigma = \sqrt{\lambda}
+]</p>
+<h3 id="explanation-3">Explanation:</h3>
+<ul>
+<li>( \lambda ): The average number of occurrences.</li>
+</ul>
+<h3 id="example-3">Example:</h3>
+<p>If a store receives an average of ( \lambda = 5 ) customers per hour, the standard deviation for the number of customers is:</p>
+<p>[
+\sigma = \sqrt{5} \approx 2.24
+]</p>
+<hr>
+<h2 id="5-geometric-distribution">5. Geometric Distribution</h2>
+<h3 id="definition-4">Definition:</h3>
+<p>The geometric distribution describes the number of failures before the first success, with the probability of success ( p ).</p>
+<h3 id="standard-deviation-formula-3">Standard Deviation Formula:</h3>
+<p>[
+\sigma = \frac{\sqrt{1 - p}}{p}
+]</p>
+<h3 id="explanation-4">Explanation:</h3>
+<ul>
+<li>( p ): The probability of success.</li>
+</ul>
+<h3 id="example-4">Example:</h3>
+<p>If the probability of making a successful basketball shot is ( p = 0.3 ), the standard deviation for the number of attempts before the first success is:</p>
+<p>[
+\sigma = \frac{\sqrt{1 - 0.3}}{0.3} \approx 2.19
+]</p>
+<hr>
+<h2 id="6-uniform-distribution">6. Uniform Distribution</h2>
+<h3 id="definition-5">Definition:</h3>
+<p>In a uniform distribution, all values within a certain range are equally likely to occur. Suppose a random variable ( X ) is uniformly distributed over the interval ([a, b]).</p>
+<h3 id="standard-deviation-formula-4">Standard Deviation Formula:</h3>
+<p>[
+\sigma = \frac{b - a}{\sqrt{12}}
+]</p>
+<h3 id="explanation-5">Explanation:</h3>
+<ul>
+<li>( a, b ): The lower and upper limits of the interval.</li>
+</ul>
+<h3 id="example-5">Example:</h3>
+<p>If a random variable is uniformly distributed between ( 0 ) and ( 10 ), the standard deviation is:</p>
+<p>[
+\sigma = \frac{10 - 0}{\sqrt{12}} \approx 2.89
+]</p>
+<hr>
+<h2 id="7-exponential-distribution">7. Exponential Distribution</h2>
+<h3 id="definition-6">Definition:</h3>
+<p>The exponential distribution describes the time between events, with the parameter ( \lambda ), representing the rate of occurrence.</p>
+<h3 id="standard-deviation-formula-5">Standard Deviation Formula:</h3>
+<p>[
+\sigma = \frac{1}{\lambda}
+]</p>
+<h3 id="explanation-6">Explanation:</h3>
+<ul>
+<li>( \lambda ): The rate of occurrence.</li>
+</ul>
+<h3 id="example-6">Example:</h3>
+<p>If a device fails on average ( \lambda = 2 ) times per hour, the standard deviation of the time between failures is:</p>
+<p>[
+\sigma = \frac{1}{2} = 0.5 \text{ hours}
+]</p>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>The standard deviation plays a crucial role in statistics and probability theory by measuring the dispersion of data. The methods for calculating standard deviation vary depending on the type of distribution:</p>
+<ul>
+<li><strong>Discrete distributions</strong>: Such as binomial, hypergeometric, Poisson, and geometric distributions, have specific formulas.</li>
+<li><strong>Continuous distributions</strong>: Such as normal, uniform, and exponential distributions, often require specific formulas or integration to calculate the standard deviation.</li>
+<li><strong>Sample data</strong>: For unknown distributions, the standard deviation is calculated based on data points and their mean.</li>
+</ul>
+<p>Understanding these calculation methods allows for more accurate analysis of data characteristics in both scientific research and practical applications.</p>
+<p>Feel free to leave comments if you have any questions or need further discussion.</p>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/">Understanding Registers and Common Operations in MIPS Assembly</a></span>
+  <span class="nav-next"><a href="/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/">Shell Basics Pipelines and Built in Commands</a> &rarr;</span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

@@ -6,8 +6,15 @@
     <description>Recent content in Home on Q</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Sep 2024 15:05:14 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2024 23:55:01 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell Basics Pipelines and Built in Commands</title>
+      <link>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</link>
+      <pubDate>Mon, 28 Oct 2024 23:55:01 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</guid>
+      <description>This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.&#xA;Introduction A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</description>
+    </item>
     <item>
       <title>Understanding Registers and Common Operations in MIPS Assembly</title>
       <link>http://localhost:1313/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</link>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Shell Basics Pipelines and Built in Commands - Q</title>
+    <meta property="og:title" content="Shell Basics Pipelines and Built in Commands - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.
+[&amp;hellip;] A shell is essentially an interface that facilitates interaction between &amp;hellip;">
+      <meta property="og:description" content="This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.
+[&amp;hellip;] A shell is essentially an interface that facilitates interaction between &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>Shell Basics Pipelines and Built in Commands | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Shell Basics Pipelines and Built in Commands</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2024-10-28
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<p>This blog post is a summary and reflection based on my <a href="https://github.com/TriangleMesh/rust-shell">practice</a> implementing a shell in Rust following a <a href="https://www.joshmcguigan.com/blog/build-your-own-shell-rust/?continueFlag=ec50636fc072c968484f031a257acd3d">tutorial</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</p>
+<p>When implementing a shell, the core task is to process the user’s input and handle each part accordingly.</p>
+<p>When a user inputs a command in the terminal, for example:</p>
+<pre><code class="language-bash">rm -rf /path/to/directory
+</code></pre>
+<p>We need to parse it into:</p>
+<ul>
+<li>Command: <code>rm</code></li>
+<li>Option: <code>-rf</code></li>
+<li>Argument: <code>/path/to/directory</code></li>
+</ul>
+<p>Each of these parts needs to be handled separately to execute the user’s intent correctly.</p>
+<p>Another example:</p>
+<pre><code class="language-bash">cat access.log | grep &quot;404&quot;
+</code></pre>
+<p>This command involves a pipeline operation and should be parsed into two subcommands:</p>
+<ol>
+<li>
+<p>Subcommand 1: <code>cat access.log</code></p>
+<ul>
+<li>Command: <code>cat</code></li>
+<li>Argument: <code>access.log</code></li>
+</ul>
+</li>
+<li>
+<p>Subcommand 2: <code>grep &quot;404&quot;</code></p>
+<ul>
+<li>Command: <code>grep</code></li>
+<li>Argument: <code>&quot;404&quot;</code></li>
+</ul>
+</li>
+</ol>
+<p>Here, the output of the first subcommand serves as the input to the second subcommand.</p>
+<h3 id="implementation-in-rust">Implementation in Rust</h3>
+<p>In Rust, you can split the user’s input command string by the pipe symbol <code>|</code> into multiple subcommands. Then, split each subcommand by spaces into the command and its arguments. Here’s a sample code:</p>
+<pre><code class="language-rust">let mut commands = input.trim().split('|').peekable();
+while let Some(subcommand) = commands.next() {
+    let mut parts = subcommand.trim().split_whitespace();
+    let action = parts.next().unwrap();
+    let args = parts;
+    match action {
+        // Handle different commands here
+        _ =&gt; { /* ... */ }
+    }
+}
+</code></pre>
+<p>In this structure:</p>
+<ul>
+<li><code>commands</code> is an iterator of <code>subcommands</code> split by the pipe symbol.</li>
+<li><code>subcommand</code> is the current <code>subcommand</code> string being processed.</li>
+<li><code>action</code> is the command part of the <code>subcommand</code>.</li>
+<li><code>args</code> are the arguments of the <code>subcommand</code>.</li>
+</ul>
+<h2 id="pipelines">Pipelines</h2>
+<h3 id="concept-of-pipelines">Concept of Pipelines</h3>
+<p>In a shell, you can use the pipe symbol | to pass the output of one command as the input to the next command. For example:</p>
+<pre><code class="language-bash">ls | grep &quot;Cargo&quot;
+</code></pre>
+<p>The execution process of this command is:</p>
+<ol>
+<li><code>ls</code> lists all files in the current directory.</li>
+<li>The pipe <code>|</code> passes the output of <code>ls</code> to the <code>grep</code> command.</li>
+<li><code>grep &quot;Cargo&quot;</code> filters lines containing &ldquo;Cargo&rdquo; from the input and outputs the result.</li>
+</ol>
+<h3 id="how-pipelines-work">How Pipelines Work</h3>
+<p>To implement pipeline functionality in a shell, you need to control the standard input (<code>stdin</code>) and standard output (<code>stdout</code>) of child processes. The specific steps are:</p>
+<ol>
+<li>Create the first child process and set its <code>stdout</code> to a pipe so that its output can be passed to the next process.</li>
+<li>For each subsequent child process:
+<ul>
+<li>Set its <code>stdin</code> to the <code>stdout</code> of the previous process.</li>
+<li>If there is a next process, set its <code>stdout</code> to a pipe.</li>
+</ul>
+</li>
+</ol>
+<h3 id="implementation-in-rust-1">Implementation in Rust</h3>
+<p>Using Rust’s standard library <code>Command</code> and <code>Stdio</code>, we can conveniently implement pipeline operations. Below is an example demonstrating how to connect two commands in Rust:</p>
+<pre><code class="language-rust">use std::process::{Command, Stdio};
+
+fn main() {
+    // Create the first command, setting stdout to a pipe
+    let ls = Command::new(&quot;ls&quot;)
+        .stdout(Stdio::piped())
+        .spawn()
+        .expect(&quot;Failed to execute ls&quot;);
+
+    // Get the stdout of the first command
+    let ls_stdout = ls.stdout.expect(&quot;Failed to capture ls stdout&quot;);
+
+    // Create the second command, using the stdout of the first command as stdin
+    let grep = Command::new(&quot;grep&quot;)
+        .arg(&quot;Cargo&quot;)
+        .stdin(Stdio::from(ls_stdout))
+        .stdout(Stdio::piped())
+        .spawn()
+        .expect(&quot;Failed to execute grep&quot;);
+
+    // Get the output of the second command
+    let output = grep
+        .wait_with_output()
+        .expect(&quot;Failed to wait on grep&quot;);
+
+    // Output the result
+    println!(&quot;{}&quot;, String::from_utf8_lossy(&amp;output.stdout));
+}
+</code></pre>
+<h3 id="key-implementation-points">Key Implementation Points</h3>
+<ol>
+<li>
+<p><strong>Configure the input and output of child processes:</strong></p>
+<ul>
+<li>Use <code>stdout(Stdio::piped())</code> to redirect the standard output of a child process to a pipe.</li>
+<li>For child processes that need to read input from the previous command, use <code>stdin(Stdio::from(previous_stdout))</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Manage the lifecycle of child processes:</strong></p>
+<ul>
+<li>Use <code>.spawn()</code> to start a child process.</li>
+<li>For child processes that need to capture output, use <code>.wait_with_output()</code> to wait for the process to finish and get the output.</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Handling:</strong></p>
+<ul>
+<li>Use <code>expect</code> or <code>if let Err(e) = ...</code> at each step to handle potential errors and ensure program robustness.</li>
+</ul>
+</li>
+</ol>
+<h2 id="handling-built-in-commands">Handling Built-in Commands</h2>
+<h3 id="why-built-in-commands-are-needed">Why Built-in Commands Are Needed</h3>
+<p>Certain commands (like <code>cd</code>) need to modify the state of the shell process itself. For example, the <code>cd</code> command changes the current working directory. If <code>cd</code> is implemented as an external command (child process), it can only change the working directory of the child process and will not affect the parent process (the shell).</p>
+<p>Therefore, these built-in commands need to be implemented directly within the shell to modify the shell process’s state.</p>
+<h3 id="code-implementation-example">Code Implementation Example</h3>
+<p>When processing user input commands, you can use a <code>match</code> statement to handle built-in commands specially. For example:</p>
+<pre><code class="language-rust">use std::env;
+use std::path::Path;
+
+match action {
+    &quot;cd&quot; =&gt; {
+        // Get the target directory, defaulting to the home directory
+        let new_dir = args.peekable().peek().map_or(&quot;~&quot;, |x| *x);
+        let root = Path::new(new_dir);
+        if let Err(e) = env::set_current_dir(&amp;root) {
+            eprintln!(&quot;cd: {}&quot;, e);
+        }
+        // After executing a built-in command, there's no need to handle subsequent pipelines
+        previous_command = None;
+    },
+    // Handle other commands
+    _ =&gt; { /* ... */ }
+}
+</code></pre>
+<p>In this example:</p>
+<ul>
+<li><code>env::set_current_dir</code> is used to change the current working directory.</li>
+<li>If the change fails, an error message is output.</li>
+<li>After executing the built-in command, <code>previous_command</code> is set to <code>None</code>, indicating that there’s no need to handle pipelines.</li>
+</ul>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/">Understanding Registers and Common Operations in MIPS Assembly</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

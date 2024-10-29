@@ -6,14 +6,21 @@
     <description>Recent content in Posts on Q</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Sep 2024 15:05:14 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2024 23:55:01 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell Basics Pipelines and Built in Commands</title>
+      <link>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</link>
+      <pubDate>Mon, 28 Oct 2024 23:55:01 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</guid>
+      <description>This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.&#xA;Introduction A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</description>
+    </item>
     <item>
       <title>Understanding Registers and Common Operations in MIPS Assembly</title>
       <link>http://localhost:1313/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</link>
       <pubDate>Mon, 30 Sep 2024 15:05:14 -0700</pubDate>
       <guid>http://localhost:1313/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</guid>
-      <description>1. Types of Registers in MIPS Assembly MIPS provides 32 general-purpose registers that are divided into different categories based on their use. Understanding the function and usage conventions of these registers is fundamental to writing efficient MIPS programs.&#xA;1.1 Temporary Registers ($t0 - $t9) Purpose: $t0 to $t9 are temporary registers used to store temporary data. Their values do not need to be preserved across function calls, meaning they may be overwritten during the execution of a function.</description>
+      <description>1. Types of Registers in MIPS Assembly MIPS provides 32 general-purpose registers that are divided into different categories based on their use.&#xA;1.1 Temporary Registers ($t0 - $t9) Purpose: $t0 to $t9 are temporary registers used to store temporary data. Their values do not need to be preserved across function calls, meaning they may be overwritten during the execution of a function.&#xA;Use case:&#xA;• Short-term computation results: Used to store intermediate results or temporary variables.</description>
     </item>
     <item>
       <title>Ways to Customize Sorting in PriorityQueue</title>
