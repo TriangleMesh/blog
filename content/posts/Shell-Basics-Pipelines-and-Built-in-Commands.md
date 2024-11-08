@@ -1,5 +1,5 @@
 +++
-title = 'Shell Basics Pipelines and Built in Commands'
+title = 'Shell Basics: Pipelines and Built in Commands'
 date = 2024-10-28T23:55:01-07:00
 +++
 

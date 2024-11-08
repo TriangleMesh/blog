@@ -1,7 +1,7 @@
 +++
 title = 'Standard Deviation Calculation for Common Probability Distributions'
 date = 2024-10-21T15:58:43-07:00
-draft = true
+# draft = true
 +++
 ## 1. Binomial Distribution
 
@@ -12,9 +12,9 @@ The binomial distribution applies to independent repeated trials where each tria
 ### Standard Deviation Formula:
 
 $$
-\[
+\
 \sigma = \sqrt{n \cdot p \cdot (1 - p)}
-\]
+\
 $$
 
 ### Explanation:
@@ -39,8 +39,6 @@ $$
 \
 $$
 
----
-
 ## 2. Hypergeometric Distribution
 
 ### Definition:
@@ -49,9 +47,11 @@ The hypergeometric distribution describes sampling without replacement from a fi
 
 ### Standard Deviation Formula:
 
-\[
+$$
+\
 \sigma = \sqrt{n \cdot \frac{K}{N} \cdot \frac{N - K}{N} \cdot \frac{N - n}{N - 1}}
-\]
+\
+$$
 
 ### Explanation:
 
@@ -65,11 +65,11 @@ Suppose there are \( N = 20 \) balls, of which \( K = 5 \) are red, and the rema
 
 **Calculation:**
 
-\[
+$$
+\
 \sigma = \sqrt{4 \cdot \frac{5}{20} \cdot \frac{15}{20} \cdot \frac{16}{19}} \approx 0.87
-\]
-
----
+\
+$$
 
 ## 3. Normal Distribution
 
@@ -78,60 +78,80 @@ Suppose there are \( N = 20 \) balls, of which \( K = 5 \) are red, and the rema
 The normal distribution is a key continuous probability distribution, and many natural phenomena approximately follow it. The standard deviation measures the spread of data around the mean.
 
 ### Standard Deviation Formula for Sample Data:
-
+$$
 \\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}}\\
-
+$$
 
 
 ### Explanation:
 
-- \( x_i \): The \( i \)-th data point.
-- \( \mu \): The mean of the data.
-- \( n \): The number of data points.
+- <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub><mi>x</mi><mi>i</mi></msub>
+</math>: The i-th data point.
+- <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#956;</mi>
+</math>: The mean of the data.</span>
+- <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>n</mi>
+</math>: The number of data points.</span>
 
 ### Example:
 
-Suppose you have a set of measurements: \( x_1 = 1, x_2 = 2, x_3 = 3, x_4 = 4, x_5 = 5 \).
+Suppose you have a set of measurements: 
+    $$
+    x_1 = 1, x_2 = 2, x_3 = 3, x_4 = 4, x_5 = 5
+    $$
 
 **Mean Calculation:**
 
-\[
+$$
+\
 \mu = \frac{1 + 2 + 3 + 4 + 5}{5} = 3
-\]
+\
+$$
 
 **Standard Deviation Calculation:**
-
-\[
+$$
+\
 \sigma = \sqrt{\frac{(1-3)^2 + (2-3)^2 + (3-3)^2 + (4-3)^2 + (5-3)^2}{5}} = \sqrt{2} \approx 1.41
-\]
-
----
+\
+$$
 
 ## 4. Poisson Distribution
 
 ### Definition:
 
-The Poisson distribution is used to describe the number of events occurring within a fixed interval of time or space, with the parameter \( \lambda \), which represents the average number of occurrences.
+The Poisson distribution is used to describe the number of events occurring within a fixed interval of time or space, with the parameter <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math></span>, which represents the average number of occurrences.
 
 ### Standard Deviation Formula:
 
-\[
+$$
+\
 \sigma = \sqrt{\lambda}
-\]
+\
+$$
+
+
 
 ### Explanation:
 
-- \( \lambda \): The average number of occurrences.
+- <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math> : The average number of occurrences.</span>
 
 ### Example:
 
-If a store receives an average of \( \lambda = 5 \) customers per hour, the standard deviation for the number of customers is:
+If a store receives an average of <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math></span> = 5 customers per hour, the standard deviation for the number of customers is:
 
-\[
+$$
+\
 \sigma = \sqrt{5} \approx 2.24
-\]
-
----
+\
+$$
 
 ## 5. Geometric Distribution
 
@@ -141,9 +161,11 @@ The geometric distribution describes the number of failures before the first suc
 
 ### Standard Deviation Formula:
 
-\[
+$$
+\
 \sigma = \frac{\sqrt{1 - p}}{p}
-\]
+\
+$$
 
 ### Explanation:
 
@@ -153,13 +175,14 @@ The geometric distribution describes the number of failures before the first suc
 
 If the probability of making a successful basketball shot is \( p = 0.3 \), the standard deviation for the number of attempts before the first success is:
 
-\[
+$$
+\
 \sigma = \frac{\sqrt{1 - 0.3}}{0.3} \approx 2.19
-\]
+\
+$$
 
----
 
-## 6. Uniform Distribution
+<!-- ## 6. Uniform Distribution
 
 ### Definition:
 
@@ -167,9 +190,11 @@ In a uniform distribution, all values within a certain range are equally likely 
 
 ### Standard Deviation Formula:
 
-\[
+$$
+\
 \sigma = \frac{b - a}{\sqrt{12}}
-\]
+\
+$$
 
 ### Explanation:
 
@@ -179,46 +204,43 @@ In a uniform distribution, all values within a certain range are equally likely 
 
 If a random variable is uniformly distributed between \( 0 \) and \( 10 \), the standard deviation is:
 
-\[
+$$
+\
 \sigma = \frac{10 - 0}{\sqrt{12}} \approx 2.89
-\]
+\
+$$ -->
 
----
-
-## 7. Exponential Distribution
+## 6. Exponential Distribution
 
 ### Definition:
 
-The exponential distribution describes the time between events, with the parameter \( \lambda \), representing the rate of occurrence.
+The exponential distribution describes the time between events, with the parameter <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math></span>, representing the rate of occurrence.
 
 ### Standard Deviation Formula:
 
-\[
+$$
+\
 \sigma = \frac{1}{\lambda}
-\]
+\
+$$
 
 ### Explanation:
 
-- \( \lambda \): The rate of occurrence.
+- <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math></span>: The rate of occurrence.
 
 ### Example:
 
-If a device fails on average \( \lambda = 2 \) times per hour, the standard deviation of the time between failures is:
+If a device fails on average <span><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#955;</mi>
+</math></span> = 2 times per hour, the standard deviation of the time between failures is:
 
-\[
+$$
+\
 \sigma = \frac{1}{2} = 0.5 \text{ hours}
-\]
+\
+$$
 
----
-
-## Conclusion
-
-The standard deviation plays a crucial role in statistics and probability theory by measuring the dispersion of data. The methods for calculating standard deviation vary depending on the type of distribution:
-
-- **Discrete distributions**: Such as binomial, hypergeometric, Poisson, and geometric distributions, have specific formulas.
-- **Continuous distributions**: Such as normal, uniform, and exponential distributions, often require specific formulas or integration to calculate the standard deviation.
-- **Sample data**: For unknown distributions, the standard deviation is calculated based on data points and their mean.
-
-Understanding these calculation methods allows for more accurate analysis of data characteristics in both scientific research and practical applications.
-
-Feel free to leave comments if you have any questions or need further discussion.

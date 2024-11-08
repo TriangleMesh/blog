@@ -9,11 +9,25 @@
     <lastBuildDate>Mon, 28 Oct 2024 23:55:01 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Shell Basics Pipelines and Built in Commands</title>
+      <title>Shell Basics: Pipelines and Built in Commands</title>
       <link>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</link>
       <pubDate>Mon, 28 Oct 2024 23:55:01 -0700</pubDate>
       <guid>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</guid>
       <description>This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.&#xA;Introduction A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</description>
+    </item>
+    <item>
+      <title>How to Use a Free Apple Developer Account for Local Testing</title>
+      <link>http://localhost:1313/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</link>
+      <pubDate>Sun, 27 Oct 2024 00:33:41 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</guid>
+      <description>In iOS development, Apple provides a free developer account for personal use. Although the free account has some limitations compared to the paid version, it can still be used for local testing and debugging of applications. This article will provide a detailed guide on how to use a free Apple developer account for local testing, along with specific step-by-step instructions.&#xA;Limitations of a Free Developer Account When using a free Apple developer account, it’s important to understand the following limitations:</description>
+    </item>
+    <item>
+      <title>Standard Deviation Calculation for Common Probability Distributions</title>
+      <link>http://localhost:1313/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</link>
+      <pubDate>Mon, 21 Oct 2024 15:58:43 -0700</pubDate>
+      <guid>http://localhost:1313/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</guid>
+      <description>1. Binomial Distribution Definition: The binomial distribution applies to independent repeated trials where each trial has only two possible outcomes (success or failure). Let the probability of success in each trial be ( p ), the probability of failure be ( 1 - p ), and the number of trials be ( n ).&#xA;Standard Deviation Formula: $$ \sigma = \sqrt{n \cdot p \cdot (1 - p)} $$&#xA;Explanation: ( n ): The number of trials.</description>
     </item>
     <item>
       <title>Understanding Registers and Common Operations in MIPS Assembly</title>
