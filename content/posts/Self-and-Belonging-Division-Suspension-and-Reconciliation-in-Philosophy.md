@@ -3,8 +3,6 @@ title = 'Self and Belonging: Division Suspension and Reconciliation in Philosoph
 date = 2025-01-12T13:56:05-08:00
 +++
 
-# Self and Belonging: Division, Suspension, and Reconciliation in Philosophy
-
 Modern and contemporary philosophy often centers on critique and logic, separating the self from the world. The self is extracted from its original web of relationships, transforming into an isolated entity. While this division grants philosophy clarity, it also ushers in profound human disconnection from meaning and belonging. Rootless and unanchored, anxiety emerges. Through layers of logical deduction and reflection, the existence of the self appears increasingly suspended and fragile.
 
 But if the self were to completely sever ties with belonging, could it still persist? Or, more precisely, would this "existing" self still resemble the self we recognize? I propose two possibilities: 
