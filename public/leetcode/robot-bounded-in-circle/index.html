@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=63176&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Robot Bounded in Circle - Q</title>
+    <meta property="og:title" content="Robot Bounded in Circle - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="LeetCode Problem: Robot Bounded In Circle
+[&amp;hellip;] a string of instructions, which will be repeated forever.
+[&amp;hellip;] For each instruction:
+[&amp;hellip;] To determine if the robot is bounded, we &amp;hellip;">
+      <meta property="og:description" content="LeetCode Problem: Robot Bounded In Circle
+[&amp;hellip;] a string of instructions, which will be repeated forever.
+[&amp;hellip;] For each instruction:
+[&amp;hellip;] To determine if the robot is bounded, we &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>Robot Bounded in Circle | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  </head>
+  <body class="leetcode">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/leetcode/">Leetcode</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>Robot Bounded in Circle</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2025-08-23
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<h2 id="problem-description">Problem Description</h2>
+<p><strong>LeetCode Problem:</strong> <a href="https://leetcode.com/problems/robot-bounded-in-circle/description/">Robot Bounded In Circle</a></p>
+<h2 id="input-output">Input/Output</h2>
+<h3 id="input-instructions-str">Input - <code>instructions: str</code></h3>
+<p>a string of instructions, which will be repeated forever.</p>
+<ul>
+<li><code>1 &lt;= instructions.length &lt;= 100</code></li>
+<li><code>instructions[i]</code> is <code>'G'</code>, <code>'L'</code> or <code>'R'</code></li>
+</ul>
+<p>For each instruction:</p>
+<ul>
+<li><code>'G'</code>: moves the robot 1 step forward by adding the current direction to its position</li>
+<li><code>'L'</code> and <code>'R'</code>: rotate the direction vector 90 degrees</li>
+</ul>
+<h3 id="output-true-false">Output - <code>True/False</code></h3>
+<ul>
+<li><strong>True:</strong> The robot is bounded in a circle (will return to origin eventually)</li>
+<li><strong>False:</strong> The robot will move infinitely far from the origin</li>
+</ul>
+<p>To determine if the robot is bounded, we check after one execution of the instructions:</p>
+<p><strong>True (Bounded):</strong></p>
+<ul>
+<li>If the robot returns to origin <code>(0,0)</code></li>
+<li>If the robot&rsquo;s direction has changed from the initial direction
+<ul>
+<li>The robot can only face 4 directions, so if direction changes after one cycle, it will form a closed shape within 4 cycles</li>
+</ul>
+</li>
+</ul>
+<p><strong>False (Unbounded):</strong></p>
+<ul>
+<li>If the robot is not at origin AND still facing the same direction, it will move infinitely in that direction</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong>True:</strong> <code>final_pos == (0, 0)</code> or <code>final_dir != initial_dir</code></li>
+<li><strong>False:</strong> <code>final_pos != (0, 0)</code> and <code>final_dir == initial_dir</code></li>
+</ul>
+<h2 id="analysis">Analysis</h2>
+<p>To determine True/False, we need to track:</p>
+<ol>
+<li>The robot&rsquo;s position</li>
+<li>Its direction</li>
+</ol>
+<p>in 2D space</p>
+<p><strong>Direction options:</strong>
+To represent direction, we have two options:</p>
+<ol>
+<li>Update the angle θ and use (cosθ,sinθ)</li>
+<li>Simply choose from four unit vectors: (0,1), (1,0), (0,-1), (-1,0)</li>
+</ol>
+<p>Here we choose the second option to solve it:</p>
+<h2 id="solution">Solution</h2>
+<pre><code class="language-python">class Solution:
+    def isRobotBounded(self, instructions: str) -&gt; bool:
+        direction = [0, 1]
+        pos = [0, 0]
+        for c in instructions:
+            if c == 'L':
+                # [0, 1] -&gt; [-1, 0] -&gt; [0, -1] -&gt; [1, 0] -&gt; [0, 1]
+                x, y = direction
+                direction = [-y, x]
+            if c == 'R':
+                # [0, 1] -&gt; [1, 0] -&gt; [0, -1] -&gt; [-1, 0]
+                x, y = direction
+                direction = [y, -x]
+            if c == 'G':
+                pos[0] += direction[0]
+                pos[1] += direction[1]
+        return direction != [0, 1] or pos == [0, 0]
+</code></pre>
+<h2 id="complexity">Complexity</h2>
+<ul>
+<li><strong>Time:</strong> O(n) - iterate through each instruction once</li>
+<li><strong>Space:</strong> O(1) - only use fixed variables for position and direction</li>
+</ul>
+<h2 id="generalization">Generalization</h2>
+<p>This approach extends to higher dimensions with discrete rotations and variable step sizes:</p>
+<p><strong>Core Principle (Any Dimension):</strong></p>
+<ul>
+<li><strong>Bounded condition:</strong> <code>final_position == origin</code> OR <code>final_direction != initial_direction</code></li>
+<li><strong>Rotation constraints:</strong>
+<ul>
+<li><strong>2D:</strong> Simple angles (90°, 60°, 45°) - rational multiples of 2π</li>
+<li><strong>3D:</strong> More complex - rotations around different axes, Euler angles</li>
+<li><strong>nD:</strong> Even more complex - rotations in multiple planes simultaneously</li>
+<li><strong>Key requirement:</strong> Rotations must form a finite group (discrete, not continuous)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Higher Dimensions:</strong></p>
+<ul>
+<li><strong>Direction representation:</strong>
+<ul>
+<li>2D: <code>[dx, dy]</code> unit vector</li>
+<li>3D: <code>[dx, dy, dz]</code> unit vector</li>
+<li>nD: <code>[d1, d2, ..., dn]</code> where <code>d1² + d2² + ... + dn² = 1</code></li>
+</ul>
+</li>
+<li><strong>Rotation:</strong> n×n orthogonal matrices
+<ul>
+<li>In our 2D solution, although we use simple pattern-based coordinate transformations to find the transformed (x,y), this is fundamentally a rotation problem around the origin that can be explained using linear algebra:
+<pre><code># General rotation matrix for angle θ (counterclockwise):
+⎡cos(θ)  -sin(θ)⎤ ⎡x⎤   ⎡x·cos(θ) - y·sin(θ)⎤
+⎣sin(θ)   cos(θ)⎦ ⎣y⎦ = ⎣x·sin(θ) + y·cos(θ)⎦
+
+# For θ = 90° (Left turn): cos(90°)=0, sin(90°)=1
+⎡0  -1⎤ ⎡x⎤   ⎡-y⎤
+⎣1   0⎦ ⎣y⎦ = ⎣ x⎦
+
+# For θ = -90° (Right turn): cos(-90°)=0, sin(-90°)=-1  
+⎡ 0   1⎤ ⎡x⎤   ⎡ y⎤
+⎣-1   0⎦ ⎣y⎦ = ⎣-x⎦
+</code></pre>
+</li>
+</ul>
+</li>
+<li><strong>Same logic:</strong> If direction changes after one cycle, robot forms closed path in finite steps</li>
+</ul>
+<p><strong>Variable Step Size:</strong></p>
+<ul>
+<li>Replace <code>pos += direction * 1</code> with <code>pos += direction * step_length</code></li>
+</ul>
+<p><strong>3D Extension - Variable Step Lengths with X/Y/Z-Axis Rotations:</strong></p>
+<pre><code class="language-python">import math
+
+def isRobotBounded3D(instructions: str) -&gt; bool:
+    # Start facing +Y direction
+    direction = [0, 1, 0]
+    pos = [0, 0, 0]
+    
+    def rotate_around_z(vec, angle_deg):
+        &quot;&quot;&quot;
+        Rotate vector around z-axis using 3D rotation matrix:
+        ⎡cos(θ)  -sin(θ)   0⎤ ⎡x⎤   ⎡x*cos(θ) - y*sin(θ)⎤
+        ⎢sin(θ)   cos(θ)   0⎥ ⎢y⎥ = ⎢x*sin(θ) + y*cos(θ)⎥
+        ⎣  0        0      1⎦ ⎣z⎦   ⎣        z           ⎦
+        
+        Z-axis rotation only affects x,y coordinates, z remains unchanged
+        &quot;&quot;&quot;
+        angle = math.radians(angle_deg)  # Convert degrees to radians
+        cos_a, sin_a = math.cos(angle), math.sin(angle)
+        return [
+            vec[0] * cos_a - vec[1] * sin_a,  # new_x = x*cos(θ) - y*sin(θ)
+            vec[0] * sin_a + vec[1] * cos_a,  # new_y = x*sin(θ) + y*cos(θ)
+            vec[2]                            # new_z = z (unchanged)
+        ]
+    
+    def rotate_around_x(vec, angle_deg):
+        &quot;&quot;&quot;
+        Rotate vector around x-axis using 3D rotation matrix:
+        ⎡1    0       0   ⎤ ⎡x⎤   ⎡        x          ⎤
+        ⎢0  cos(θ) -sin(θ)⎥ ⎢y⎥ = ⎢y*cos(θ) - z*sin(θ)⎥
+        ⎣0  sin(θ)  cos(θ)⎦ ⎣z⎦   ⎣y*sin(θ) + z*cos(θ)⎦
+        
+        X-axis rotation only affects y,z coordinates, x remains unchanged
+        &quot;&quot;&quot;
+        angle = math.radians(angle_deg)  # Convert degrees to radians
+        cos_a, sin_a = math.cos(angle), math.sin(angle)
+        return [
+            vec[0],                            # new_x = x (unchanged)
+            vec[1] * cos_a - vec[2] * sin_a,   # new_y = y*cos(θ) - z*sin(θ)
+            vec[1] * sin_a + vec[2] * cos_a    # new_z = y*sin(θ) + z*cos(θ)
+        ]
+    
+    def rotate_around_y(vec, angle_deg):
+        &quot;&quot;&quot;
+        Rotate vector around y-axis using 3D rotation matrix:
+        ⎡ cos(θ)  0  sin(θ)⎤ ⎡x⎤   ⎡x*cos(θ) + z*sin(θ)⎤
+        ⎢   0     1    0   ⎥ ⎢y⎥ = ⎢        y           ⎥
+        ⎣-sin(θ)  0  cos(θ)⎦ ⎣z⎦   ⎣-x*sin(θ) + z*cos(θ)⎦
+        
+        Y-axis rotation only affects x,z coordinates, y remains unchanged
+        &quot;&quot;&quot;
+        angle = math.radians(angle_deg)  # Convert degrees to radians
+        cos_a, sin_a = math.cos(angle), math.sin(angle)
+        return [
+            vec[0] * cos_a + vec[2] * sin_a,   # new_x = x*cos(θ) + z*sin(θ)
+            vec[1],                            # new_y = y (unchanged)
+            -vec[0] * sin_a + vec[2] * cos_a   # new_z = -x*sin(θ) + z*cos(θ)
+        ]
+    
+    for c in instructions:
+        if c == 'L':  # Yaw left 90° (around z-axis)
+            direction = rotate_around_z(direction, 90)
+        elif c == 'R':  # Yaw right 90° (around z-axis)
+            direction = rotate_around_z(direction, -90)
+        elif c == 'U':  # Pitch up 90° (around x-axis)
+            direction = rotate_around_x(direction, 90)
+        elif c == 'D':  # Pitch down 90° (around x-axis)
+            direction = rotate_around_x(direction, -90)
+        elif c == 'T':  # Roll left 90° (around y-axis)
+            direction = rotate_around_y(direction, 90)
+        elif c == 'S':  # Roll right 90° (around y-axis)
+            direction = rotate_around_y(direction, -90)
+        elif c.isdigit():  # Numbers represent step length
+            step_length = int(c)
+            for i in range(3):
+                pos[i] += direction[i] * step_length
+    
+    initial_direction = [0, 1, 0]
+    direction_changed = any(abs(direction[i] - initial_direction[i]) &gt; 0.001 for i in range(3))
+    at_origin = all(abs(pos[i]) &lt; 0.001 for i in range(3))
+    
+    return direction_changed or at_origin
+
+# Example: &quot;L2UT3DS1&quot; means Yaw left, move 2, pitch Up, roll left, move 3, pitch Down, roll right, move 1
+</code></pre>
+<p><strong>Key Insight:</strong> In any dimension with discrete rotations, the fundamental bounded condition remains the same regardless of step size.</p>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev"></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

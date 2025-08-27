@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leetcodes on Q</title>
+    <link>http://localhost:63176/leetcode/</link>
+    <description>Recent content in Leetcodes on Q</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 Aug 2025 21:04:27 -0700</lastBuildDate>
+    <atom:link href="http://localhost:63176/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Robot Bounded in Circle</title>
+      <link>http://localhost:63176/leetcode/robot-bounded-in-circle/</link>
+      <pubDate>Sat, 23 Aug 2025 21:04:27 -0700</pubDate>
+      <guid>http://localhost:63176/leetcode/robot-bounded-in-circle/</guid>
+      <description>Problem Link&#xA;Input/Output Analysis Input - instructions: str a string of instructions, which will be repeated forever.&#xA;1 &amp;lt;= instructions.length &amp;lt;= 100 instructions[i] is &#39;G&#39;, &#39;L&#39; or &#39;R&#39; For each instruction:&#xA;&#39;G&#39;: moves the robot 1 step forward by adding the current direction to its position &#39;L&#39; and &#39;R&#39;: rotate the direction vector 90 degrees Output - True/False True: The robot is bounded in a circle (will return to origin eventually) False: The robot will move infinitely far from the origin To determine if the robot is bounded, we check after one execution of the instructions:</description>
+    </item>
+  </channel>
+</rss>

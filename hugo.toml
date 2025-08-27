@@ -15,10 +15,10 @@ footnotereturnlinkcontents = "↩"
     name = "Posts"
     url = "/posts/"
     weight = 1
-# [[menu.main]]
-#     name = "Life"
-#     url = "/life/"
-#     weight = 2
+[[menu.main]]
+    name = "Leetcode"
+    url = "/leetcode/"
+    weight = 2
 # [[menu.main]]
 #     name = "Resource"
 #     url = "/resource/"
@@ -34,7 +34,7 @@ footnotereturnlinkcontents = "↩"
 [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 2
+    weight = 3
     
 
 

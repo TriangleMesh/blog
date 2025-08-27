@@ -2,80 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Q</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:63176/</link>
     <description>Recent content in Home on Q</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jan 2025 13:56:05 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Aug 2025 21:04:27 -0700</lastBuildDate>
+    <atom:link href="http://localhost:63176/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Robot Bounded in Circle</title>
+      <link>http://localhost:63176/leetcode/robot-bounded-in-circle/</link>
+      <pubDate>Sat, 23 Aug 2025 21:04:27 -0700</pubDate>
+      <guid>http://localhost:63176/leetcode/robot-bounded-in-circle/</guid>
+      <description>Problem Description LeetCode Problem: Robot Bounded In Circle&#xA;Input/Output Input - instructions: str a string of instructions, which will be repeated forever.&#xA;1 &amp;lt;= instructions.length &amp;lt;= 100 instructions[i] is &#39;G&#39;, &#39;L&#39; or &#39;R&#39; For each instruction:&#xA;&#39;G&#39;: moves the robot 1 step forward by adding the current direction to its position &#39;L&#39; and &#39;R&#39;: rotate the direction vector 90 degrees Output - True/False True: The robot is bounded in a circle (will return to origin eventually) False: The robot will move infinitely far from the origin To determine if the robot is bounded, we check after one execution of the instructions:</description>
+    </item>
     <item>
       <title>Self and Belonging: Division Suspension and Reconciliation in Philosophy</title>
-      <link>http://localhost:1313/posts/2025/01/12/self-and-belonging-division-suspension-and-reconciliation-in-philosophy/</link>
+      <link>http://localhost:63176/posts/2025/01/12/self-and-belonging-division-suspension-and-reconciliation-in-philosophy/</link>
       <pubDate>Sun, 12 Jan 2025 13:56:05 -0800</pubDate>
-      <guid>http://localhost:1313/posts/2025/01/12/self-and-belonging-division-suspension-and-reconciliation-in-philosophy/</guid>
+      <guid>http://localhost:63176/posts/2025/01/12/self-and-belonging-division-suspension-and-reconciliation-in-philosophy/</guid>
       <description>Modern and contemporary philosophy often centers on critique and logic, separating the self from the world. The self is extracted from its original web of relationships, transforming into an isolated entity. While this division grants philosophy clarity, it also ushers in profound human disconnection from meaning and belonging. Rootless and unanchored, anxiety emerges. Through layers of logical deduction and reflection, the existence of the self appears increasingly suspended and fragile.</description>
     </item>
     <item>
       <title>Shell Basics: Pipelines and Built in Commands</title>
-      <link>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</link>
+      <link>http://localhost:63176/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</link>
       <pubDate>Mon, 28 Oct 2024 23:55:01 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</guid>
+      <guid>http://localhost:63176/posts/2024/10/28/shell-basics-pipelines-and-built-in-commands/</guid>
       <description>This blog post is a summary and reflection based on my practice implementing a shell in Rust following a tutorial.&#xA;Introduction A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</description>
     </item>
     <item>
       <title>How to Use a Free Apple Developer Account for Local Testing</title>
-      <link>http://localhost:1313/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</link>
+      <link>http://localhost:63176/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</link>
       <pubDate>Sun, 27 Oct 2024 00:33:41 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</guid>
+      <guid>http://localhost:63176/posts/2024/10/27/how-to-use-a-free-apple-developer-account-for-local-testing/</guid>
       <description>In iOS development, Apple provides a free developer account for personal use. Although the free account has some limitations compared to the paid version, it can still be used for local testing and debugging of applications. This article will provide a detailed guide on how to use a free Apple developer account for local testing, along with specific step-by-step instructions.&#xA;Limitations of a Free Developer Account When using a free Apple developer account, it’s important to understand the following limitations:</description>
     </item>
     <item>
       <title>Standard Deviation Calculation for Common Probability Distributions</title>
-      <link>http://localhost:1313/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</link>
+      <link>http://localhost:63176/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</link>
       <pubDate>Mon, 21 Oct 2024 15:58:43 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</guid>
+      <guid>http://localhost:63176/posts/2024/10/21/standard-deviation-calculation-for-common-probability-distributions/</guid>
       <description>1. Binomial Distribution Definition: The binomial distribution applies to independent repeated trials where each trial has only two possible outcomes (success or failure). Let the probability of success in each trial be ( p ), the probability of failure be ( 1 - p ), and the number of trials be ( n ).&#xA;Standard Deviation Formula: $$ \sigma = \sqrt{n \cdot p \cdot (1 - p)} $$&#xA;Explanation: ( n ): The number of trials.</description>
     </item>
     <item>
       <title>Understanding Registers and Common Operations in MIPS Assembly</title>
-      <link>http://localhost:1313/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</link>
+      <link>http://localhost:63176/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</link>
       <pubDate>Mon, 30 Sep 2024 15:05:14 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</guid>
+      <guid>http://localhost:63176/posts/2024/09/30/understanding-registers-and-common-operations-in-mips-assembly/</guid>
       <description>1. Types of Registers in MIPS Assembly MIPS provides 32 general-purpose registers that are divided into different categories based on their use.&#xA;1.1 Temporary Registers ($t0 - $t9) Purpose: $t0 to $t9 are temporary registers used to store temporary data. Their values do not need to be preserved across function calls, meaning they may be overwritten during the execution of a function.&#xA;Use case:&#xA;• Short-term computation results: Used to store intermediate results or temporary variables.</description>
     </item>
     <item>
       <title>Ways to Customize Sorting in PriorityQueue</title>
-      <link>http://localhost:1313/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</link>
+      <link>http://localhost:63176/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</link>
       <pubDate>Sun, 29 Sep 2024 16:24:31 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</guid>
+      <guid>http://localhost:63176/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</guid>
       <description>By default, Java&amp;rsquo;s PriorityQueue uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and their solutions.&#xA;1. Implementing the Comparable Interface Allow the object to implement the Comparable interface and override the compareTo() method to define the natural sorting order of the object. This is suitable for cases where a &amp;ldquo;natural order&amp;rdquo; exists.&#xA;class Student implements Comparable&amp;lt;Student&amp;gt; { private int age; public Student(int age) { this.</description>
     </item>
     <item>
       <title>MIPS Instruction Set and Machine Code Generation</title>
-      <link>http://localhost:1313/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/</link>
+      <link>http://localhost:63176/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/</link>
       <pubDate>Sun, 29 Sep 2024 16:07:04 -0700</pubDate>
-      <guid>http://localhost:1313/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/</guid>
+      <guid>http://localhost:63176/posts/2024/09/29/mips-instruction-set-and-machine-code-generation/</guid>
       <description>Overview of the MIPS Instruction Set The MIPS instruction set consists of 32-bit fixed-length instructions, divided into several types, each with a specific field format.&#xA;Main Instruction Types: R-type Instructions: Used for operations between registers.&#xA;opcode | rs | rt | rd | shamt | funct I-type Instructions: Used for operations between registers and immediate values or for memory access.&#xA;opcode | rs | rt | immediate J-type Instructions: Used for jump operations.</description>
     </item>
     <item>
       <title>How to Build a Blog with Hugo and Github</title>
-      <link>http://localhost:1313/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</link>
+      <link>http://localhost:63176/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</link>
       <pubDate>Fri, 26 Jul 2024 19:47:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</guid>
+      <guid>http://localhost:63176/posts/2024/07/26/how-to-build-a-blog-with-hugo-and-github/</guid>
       <description>Why I Use Hugo Easy to get started: Hugo offers a large number of pre-made templates, requiring little to no front-end knowledge, allowing for a quick setup of website. Fast page loading speed: Compared to Hexo, which I used previously, Hugo generates pages significantly faster. This is because Hugo uses precompiled templates and minimal rendering and is written in Go which offers extremely high compilation speed and performance optimization. Beautiful templates: Hugo’s templates are generally less flashy than Hexo’s.</description>
     </item>
     <item>
       <title>Git Submodule Simplified Tutorial</title>
-      <link>http://localhost:1313/posts/2024/07/26/git-submodule-simplified-tutorial/</link>
+      <link>http://localhost:63176/posts/2024/07/26/git-submodule-simplified-tutorial/</link>
       <pubDate>Fri, 26 Jul 2024 00:54:14 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/07/26/git-submodule-simplified-tutorial/</guid>
+      <guid>http://localhost:63176/posts/2024/07/26/git-submodule-simplified-tutorial/</guid>
       <description>For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the submodule&amp;rsquo;s GitHub repository as the sub-repository.&#xA;Adding Submodules and Sub-repositories Clone the main repository to your local machine: git clone &amp;lt;main_repo_url&amp;gt; Add the submodule within the main module: git submodule add &amp;lt;submodule_url&amp;gt; &amp;lt;submodule_repo_name&amp;gt; If the submodule is successfully added, you will see a submodule folder inside the main module&amp;rsquo;s directory and a .</description>
     </item>
     <item>
       <title>About</title>
-      <link>http://localhost:1313/about/</link>
+      <link>http://localhost:63176/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>http://localhost:63176/about/</guid>
       <description> </description>
     </item>
   </channel>
