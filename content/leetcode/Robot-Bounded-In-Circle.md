@@ -25,16 +25,14 @@ For each instruction:
 To determine if the robot is bounded, we check after one execution of the instructions:
 
 **True (Bounded):**
-- If the robot returns to origin `(0,0)`
-- If the robot's direction has changed from the initial direction
+- `final_pos == (0, 0)`
+or
+- `final_dir != initial_dir`
   - The robot can only face 4 directions, so if direction changes after one cycle, it will form a closed shape within 4 cycles
 
 **False (Unbounded):**
-- If the robot is not at origin AND still facing the same direction, it will move infinitely in that direction
+- `final_pos != (0, 0)` and `final_dir == initial_dir`
 
-**Summary:**
-- **True:** `final_pos == (0, 0)` or `final_dir != initial_dir`
-- **False:** `final_pos != (0, 0)` and `final_dir == initial_dir`
 
 ## Analysis
 

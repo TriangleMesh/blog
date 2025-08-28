@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>How Many Numbers Are Smaller Than the Current Number - Q</title>
+    <meta property="og:title" content="How Many Numbers Are Smaller Than the Current Number - Q">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="LeetCode Problem: How Many Numbers Are Smaller Than the Current Number
+[&amp;hellip;] This is an easy problem that&amp;rsquo;s very suitable for interviews as it allows you to demonstrate multiple solution &amp;hellip;">
+      <meta property="og:description" content="LeetCode Problem: How Many Numbers Are Smaller Than the Current Number
+[&amp;hellip;] This is an easy problem that&amp;rsquo;s very suitable for interviews as it allows you to demonstrate multiple solution &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <style>
+      a {
+          text-decoration: none;
+      }
+    </style>
+    
+  <head>
+    <meta charset="utf-8">
+    <title>How Many Numbers Are Smaller Than the Current Number | Q</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  </head>
+  <body class="leetcode">
+    <header class="masthead">
+      <h1><a href="/">Q</a></h1>
+
+
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/posts/">Posts</a></li>
+  
+  <li><a href="/leetcode/">Leetcode</a></li>
+  
+  <li><a href="/about/">About</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>How Many Numbers Are Smaller Than the Current Number</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2025-08-26
+</h3>
+
+<hr>
+
+
+
+      </header>
+
+
+
+
+
+<h2 id="problem-description">Problem Description</h2>
+<p><strong>LeetCode Problem:</strong> <a href="https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/description/">How Many Numbers Are Smaller Than the Current Number</a></p>
+<h2 id="input-output">Input/Output</h2>
+<h3 id="input">Input</h3>
+<ul>
+<li><code>nums</code>: List[int] - An array of integers</li>
+<li>Constraints:
+<ul>
+<li>2 &lt;= nums.length &lt;= 500</li>
+<li>0 &lt;= nums[i] &lt;= 100</li>
+</ul>
+</li>
+</ul>
+<h3 id="output">Output</h3>
+<ul>
+<li>List[int] - For each element in the input array, return how many numbers in the array are smaller than that element</li>
+<li>The output array has the same length as the input array</li>
+</ul>
+<p>This is an easy problem that&rsquo;s very suitable for interviews as it allows you to demonstrate multiple solution approaches with different complexities.</p>
+<h2 id="brute-force">Brute Force</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
+</span></span><span style="display:flex;"><span>        rst <span style="color:#333">=</span> []
+</span></span><span style="display:flex;"><span>        count <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">for</span> m <span style="color:#000;font-weight:bold">in</span> nums:
+</span></span><span style="display:flex;"><span>                <span style="color:#080;font-weight:bold">if</span> m <span style="color:#333">&lt;</span> n:
+</span></span><span style="display:flex;"><span>                    count <span style="color:#333">+=</span> <span style="color:#00d;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(count)
+</span></span><span style="display:flex;"><span>            count <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
+</span></span></code></pre></div><h3 id="complexity">Complexity</h3>
+<ul>
+<li>Time complexity: <code>O(n²)</code></li>
+<li>Space complexity: <code>O(n)</code></li>
+</ul>
+<h2 id="optimization-sorting-hash-map">Optimization: Sorting + Hash Map</h2>
+<p>We notice that the brute force approach has many duplicated computations. For each element, we&rsquo;re recounting how many numbers are smaller than it.</p>
+<p>To avoid this duplication, we can make a space-time tradeoff by preprocessing the data. The key insight is: if we sort the array first, then the index of each element tells us exactly how many numbers are smaller than it. We use a hash map to store this mapping for quick O(1) lookups.</p>
+<p><strong>Algorithm steps:</strong></p>
+<ol>
+<li>Sort the array to determine positions</li>
+<li>Create a hash map: value → count of smaller numbers</li>
+<li>For each element in the original array, lookup its count from the hash map</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
+</span></span><span style="display:flex;"><span>        sorted_nums <span style="color:#333">=</span> <span style="color:#007020">sorted</span>(nums)
+</span></span><span style="display:flex;"><span>        d <span style="color:#333">=</span> {}
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> i, n <span style="color:#000;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(sorted_nums):
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">if</span> n <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> d:
+</span></span><span style="display:flex;"><span>                d[n] <span style="color:#333">=</span> i
+</span></span><span style="display:flex;"><span>        rst <span style="color:#333">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
+</span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(d[n])
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
+</span></span></code></pre></div><h3 id="complexity-1">Complexity</h3>
+<ul>
+<li>Time complexity: <code>O(n log n)</code></li>
+<li>Space complexity: <code>O(n)</code></li>
+</ul>
+<h2 id="counting-sort-bucket-method">Counting Sort (Bucket Method)</h2>
+<p>When we can use a hash map, we should always consider if we can replace it with an <strong>array</strong> (bucket/counting approach). This is especially effective when the range of possible values is limited and known in advance.</p>
+<p><strong>Key insight</strong>: Since <code>0 &lt;= nums[i] &lt;= 100</code>, we can use a fixed-size array of length 101 instead of a hash map. This approach is called <strong>counting sort</strong> because we count the frequency of each value.</p>
+<p><strong>Algorithm steps:</strong></p>
+<ol>
+<li>Create a frequency array to count occurrences of each number</li>
+<li>Convert frequencies to cumulative counts (prefix sum)</li>
+<li>For each element, lookup its count of smaller numbers directly from the array</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
+</span></span><span style="display:flex;"><span>        lst <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> <span style="color:#00d;font-weight:bold">101</span>
+</span></span><span style="display:flex;"><span>        rst <span style="color:#333">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
+</span></span><span style="display:flex;"><span>            lst[n] <span style="color:#333">+=</span> <span style="color:#00d;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> i, n <span style="color:#000;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(lst):
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">if</span> i <span style="color:#333">!=</span> <span style="color:#00d;font-weight:bold">0</span>:
+</span></span><span style="display:flex;"><span>                lst[i] <span style="color:#333">+=</span> lst[i <span style="color:#333">-</span> <span style="color:#00d;font-weight:bold">1</span>] 
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
+</span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(lst[n <span style="color:#333">-</span> <span style="color:#00d;font-weight:bold">1</span>] <span style="color:#080;font-weight:bold">if</span> n <span style="color:#333">&gt;=</span> <span style="color:#00d;font-weight:bold">1</span> <span style="color:#080;font-weight:bold">else</span> <span style="color:#00d;font-weight:bold">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
+</span></span></code></pre></div><h3 id="complexity-2">Complexity</h3>
+<ul>
+<li>Time complexity: <code>O(n)</code></li>
+<li>Space complexity: <code>O(n)</code></li>
+</ul>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+  <span class="nav-prev">&larr; <a href="/leetcode/robot-bounded-in-circle/">Robot Bounded in Circle</a></span>
+  <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+  
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@%3cnil%3e/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024</div>
+  
+  </footer>
+  </article>
+  
+  
+
+
+  </body>
+</html>
+

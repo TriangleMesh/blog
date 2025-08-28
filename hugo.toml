@@ -42,10 +42,11 @@ footnotereturnlinkcontents = "↩"
   # description abou this website
   description = ""
   footer = "&copy; <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024"
-  highlightjsCDN = "//cdn.bootcss.com"
-  highlightjsLang = ["r", "yaml", "tex"]
-  highlightjsTheme = "github"
-  highlightjsVersion = "9.12.0"
+
+  # highlightjsCDN = "//cdn.bootcss.com"
+  # highlightjsLang = ["r", "yaml", "tex"]
+  # highlightjsTheme = "github"
+  # highlightjsVersion = "9.12.0"
 
 
 ## TBD
@@ -57,7 +58,13 @@ extensionsmask = [ "noIntraEmphasis" ]
 fractions = false
 
 [markup.highlight]
-codeFences = false
+codeFences = true
+style = "colorful"
+lineNos = false
+lineNumbersInTable = false
+noClasses = true
+tabWidth = 4
+guessSyntax = true
 
 [markup.goldmark.renderer]
 unsafe = true

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=63176&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56387&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -33,8 +33,6 @@
     
     
 
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
 
 
 
@@ -114,9 +112,8 @@
 <p>A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</p>
 <p>When implementing a shell, the core task is to process the user’s input and handle each part accordingly.</p>
 <p>When a user inputs a command in the terminal, for example:</p>
-<pre><code class="language-bash">rm -rf /path/to/directory
-</code></pre>
-<p>We need to parse it into:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf /path/to/directory
+</span></span></code></pre></div><p>We need to parse it into:</p>
 <ul>
 <li>Command: <code>rm</code></li>
 <li>Option: <code>-rf</code></li>
@@ -124,9 +121,8 @@
 </ul>
 <p>Each of these parts needs to be handled separately to execute the user’s intent correctly.</p>
 <p>Another example:</p>
-<pre><code class="language-bash">cat access.log | grep &quot;404&quot;
-</code></pre>
-<p>This command involves a pipeline operation and should be parsed into two subcommands:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat access.log | grep <span style="background-color:#fff0f0">&#34;404&#34;</span>
+</span></span></code></pre></div><p>This command involves a pipeline operation and should be parsed into two subcommands:</p>
 <ol>
 <li>
 <p>Subcommand 1: <code>cat access.log</code></p>
@@ -146,18 +142,17 @@
 <p>Here, the output of the first subcommand serves as the input to the second subcommand.</p>
 <h3 id="implementation-in-rust">Implementation in Rust</h3>
 <p>In Rust, you can split the user’s input command string by the pipe symbol <code>|</code> into multiple subcommands. Then, split each subcommand by spaces into the command and its arguments. Here’s a sample code:</p>
-<pre><code class="language-rust">let mut commands = input.trim().split('|').peekable();
-while let Some(subcommand) = commands.next() {
-    let mut parts = subcommand.trim().split_whitespace();
-    let action = parts.next().unwrap();
-    let args = parts;
-    match action {
-        // Handle different commands here
-        _ =&gt; { /* ... */ }
-    }
-}
-</code></pre>
-<p>In this structure:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">mut</span><span style="color:#bbb"> </span>commands<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>input.trim().split(<span style="color:#04d;background-color:#fff0f0">&#39;|&#39;</span>).peekable();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">while</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#007020">Some</span>(subcommand)<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>commands.next()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">mut</span><span style="color:#bbb"> </span>parts<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>subcommand.trim().split_whitespace();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>action<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>parts.next().unwrap();<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>args<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>parts;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">match</span><span style="color:#bbb"> </span>action<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#888">// Handle different commands here
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">        </span>_<span style="color:#bbb"> </span><span style="color:#333">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb"> </span><span style="color:#888">/* ... */</span><span style="color:#bbb"> </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>In this structure:</p>
 <ul>
 <li><code>commands</code> is an iterator of <code>subcommands</code> split by the pipe symbol.</li>
 <li><code>subcommand</code> is the current <code>subcommand</code> string being processed.</li>
@@ -167,9 +162,8 @@ while let Some(subcommand) = commands.next() {
 <h2 id="pipelines">Pipelines</h2>
 <h3 id="concept-of-pipelines">Concept of Pipelines</h3>
 <p>In a shell, you can use the pipe symbol | to pass the output of one command as the input to the next command. For example:</p>
-<pre><code class="language-bash">ls | grep &quot;Cargo&quot;
-</code></pre>
-<p>The execution process of this command is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls | grep <span style="background-color:#fff0f0">&#34;Cargo&#34;</span>
+</span></span></code></pre></div><p>The execution process of this command is:</p>
 <ol>
 <li><code>ls</code> lists all files in the current directory.</li>
 <li>The pipe <code>|</code> passes the output of <code>ls</code> to the <code>grep</code> command.</li>
@@ -188,36 +182,35 @@ while let Some(subcommand) = commands.next() {
 </ol>
 <h3 id="implementation-in-rust-1">Implementation in Rust</h3>
 <p>Using Rust’s standard library <code>Command</code> and <code>Stdio</code>, we can conveniently implement pipeline operations. Below is an example demonstrating how to connect two commands in Rust:</p>
-<pre><code class="language-rust">use std::process::{Command, Stdio};
-
-fn main() {
-    // Create the first command, setting stdout to a pipe
-    let ls = Command::new(&quot;ls&quot;)
-        .stdout(Stdio::piped())
-        .spawn()
-        .expect(&quot;Failed to execute ls&quot;);
-
-    // Get the stdout of the first command
-    let ls_stdout = ls.stdout.expect(&quot;Failed to capture ls stdout&quot;);
-
-    // Create the second command, using the stdout of the first command as stdin
-    let grep = Command::new(&quot;grep&quot;)
-        .arg(&quot;Cargo&quot;)
-        .stdin(Stdio::from(ls_stdout))
-        .stdout(Stdio::piped())
-        .spawn()
-        .expect(&quot;Failed to execute grep&quot;);
-
-    // Get the output of the second command
-    let output = grep
-        .wait_with_output()
-        .expect(&quot;Failed to wait on grep&quot;);
-
-    // Output the result
-    println!(&quot;{}&quot;, String::from_utf8_lossy(&amp;output.stdout));
-}
-</code></pre>
-<h3 id="key-implementation-points">Key Implementation Points</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::process::{Command,<span style="color:#bbb"> </span>Stdio};<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">fn</span> <span style="color:#06b;font-weight:bold">main</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Create the first command, setting stdout to a pipe
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>ls<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>Command::new(<span style="background-color:#fff0f0">&#34;ls&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.stdout(Stdio::piped())<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.spawn()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.expect(<span style="background-color:#fff0f0">&#34;Failed to execute ls&#34;</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Get the stdout of the first command
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>ls_stdout<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>ls.stdout.expect(<span style="background-color:#fff0f0">&#34;Failed to capture ls stdout&#34;</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Create the second command, using the stdout of the first command as stdin
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>grep<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>Command::new(<span style="background-color:#fff0f0">&#34;grep&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.arg(<span style="background-color:#fff0f0">&#34;Cargo&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.stdin(Stdio::from(ls_stdout))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.stdout(Stdio::piped())<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.spawn()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.expect(<span style="background-color:#fff0f0">&#34;Failed to execute grep&#34;</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Get the output of the second command
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>output<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>grep<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.wait_with_output()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.expect(<span style="background-color:#fff0f0">&#34;Failed to wait on grep&#34;</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Output the result
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span>println!(<span style="background-color:#fff0f0">&#34;</span><span style="background-color:#eee">{}</span><span style="background-color:#fff0f0">&#34;</span>,<span style="color:#bbb"> </span><span style="color:#007020">String</span>::from_utf8_lossy(<span style="color:#333">&amp;</span>output.stdout));<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><h3 id="key-implementation-points">Key Implementation Points</h3>
 <ol>
 <li>
 <p><strong>Configure the input and output of child processes:</strong></p>
@@ -246,25 +239,24 @@ fn main() {
 <p>Therefore, these built-in commands need to be implemented directly within the shell to modify the shell process’s state.</p>
 <h3 id="code-implementation-example">Code Implementation Example</h3>
 <p>When processing user input commands, you can use a <code>match</code> statement to handle built-in commands specially. For example:</p>
-<pre><code class="language-rust">use std::env;
-use std::path::Path;
-
-match action {
-    &quot;cd&quot; =&gt; {
-        // Get the target directory, defaulting to the home directory
-        let new_dir = args.peekable().peek().map_or(&quot;~&quot;, |x| *x);
-        let root = Path::new(new_dir);
-        if let Err(e) = env::set_current_dir(&amp;root) {
-            eprintln!(&quot;cd: {}&quot;, e);
-        }
-        // After executing a built-in command, there's no need to handle subsequent pipelines
-        previous_command = None;
-    },
-    // Handle other commands
-    _ =&gt; { /* ... */ }
-}
-</code></pre>
-<p>In this example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::env;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::path::Path;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">match</span><span style="color:#bbb"> </span>action<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="background-color:#fff0f0">&#34;cd&#34;</span><span style="color:#bbb"> </span><span style="color:#333">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#888">// Get the target directory, defaulting to the home directory
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">        </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>new_dir<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>args.peekable().peek().map_or(<span style="background-color:#fff0f0">&#34;~&#34;</span>,<span style="color:#bbb"> </span><span style="color:#333">|</span>x<span style="color:#333">|</span><span style="color:#bbb"> </span><span style="color:#333">*</span>x);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>root<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>Path::new(new_dir);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-weight:bold">if</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#007020">Err</span>(e)<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>env::set_current_dir(<span style="color:#333">&amp;</span>root)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">            </span>eprintln!(<span style="background-color:#fff0f0">&#34;cd: </span><span style="background-color:#eee">{}</span><span style="background-color:#fff0f0">&#34;</span>,<span style="color:#bbb"> </span>e);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#888">// After executing a built-in command, there&#39;s no need to handle subsequent pipelines
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">        </span>previous_command<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#007020">None</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>},<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Handle other commands
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span>_<span style="color:#bbb"> </span><span style="color:#333">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb"> </span><span style="color:#888">/* ... */</span><span style="color:#bbb"> </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></div><p>In this example:</p>
 <ul>
 <li><code>env::set_current_dir</code> is used to change the current working directory.</li>
 <li>If the change fails, an error message is output.</li>
@@ -298,13 +290,7 @@ match action {
 
 
 
-
-
-
-
-
-
-<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@%3cnil%3e/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
 
 
 

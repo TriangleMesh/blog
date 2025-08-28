@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=63176&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -37,8 +37,6 @@
     
     
 
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/github.min.css">
 
 
 
@@ -135,8 +133,9 @@
 <p>To determine if the robot is bounded, we check after one execution of the instructions:</p>
 <p><strong>True (Bounded):</strong></p>
 <ul>
-<li>If the robot returns to origin <code>(0,0)</code></li>
-<li>If the robot&rsquo;s direction has changed from the initial direction
+<li><code>final_pos == (0, 0)</code>
+or</li>
+<li><code>final_dir != initial_dir</code>
 <ul>
 <li>The robot can only face 4 directions, so if direction changes after one cycle, it will form a closed shape within 4 cycles</li>
 </ul>
@@ -144,12 +143,7 @@
 </ul>
 <p><strong>False (Unbounded):</strong></p>
 <ul>
-<li>If the robot is not at origin AND still facing the same direction, it will move infinitely in that direction</li>
-</ul>
-<p><strong>Summary:</strong></p>
-<ul>
-<li><strong>True:</strong> <code>final_pos == (0, 0)</code> or <code>final_dir != initial_dir</code></li>
-<li><strong>False:</strong> <code>final_pos != (0, 0)</code> and <code>final_dir == initial_dir</code></li>
+<li><code>final_pos != (0, 0)</code> and <code>final_dir == initial_dir</code></li>
 </ul>
 <h2 id="analysis">Analysis</h2>
 <p>To determine True/False, we need to track:</p>
@@ -166,25 +160,24 @@ To represent direction, we have two options:</p>
 </ol>
 <p>Here we choose the second option to solve it:</p>
 <h2 id="solution">Solution</h2>
-<pre><code class="language-python">class Solution:
-    def isRobotBounded(self, instructions: str) -&gt; bool:
-        direction = [0, 1]
-        pos = [0, 0]
-        for c in instructions:
-            if c == 'L':
-                # [0, 1] -&gt; [-1, 0] -&gt; [0, -1] -&gt; [1, 0] -&gt; [0, 1]
-                x, y = direction
-                direction = [-y, x]
-            if c == 'R':
-                # [0, 1] -&gt; [1, 0] -&gt; [0, -1] -&gt; [-1, 0]
-                x, y = direction
-                direction = [y, -x]
-            if c == 'G':
-                pos[0] += direction[0]
-                pos[1] += direction[1]
-        return direction != [0, 1] or pos == [0, 0]
-</code></pre>
-<h2 id="complexity">Complexity</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">isRobotBounded</span>(self, instructions: <span style="color:#007020">str</span>) <span style="color:#333">-&gt;</span> <span style="color:#007020">bool</span>:
+</span></span><span style="display:flex;"><span>        direction <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">1</span>]
+</span></span><span style="display:flex;"><span>        pos <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">0</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> c <span style="color:#000;font-weight:bold">in</span> instructions:
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">if</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;L&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#888"># [0, 1] -&gt; [-1, 0] -&gt; [0, -1] -&gt; [1, 0] -&gt; [0, 1]</span>
+</span></span><span style="display:flex;"><span>                x, y <span style="color:#333">=</span> direction
+</span></span><span style="display:flex;"><span>                direction <span style="color:#333">=</span> [<span style="color:#333">-</span>y, x]
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">if</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;R&#39;</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#888"># [0, 1] -&gt; [1, 0] -&gt; [0, -1] -&gt; [-1, 0]</span>
+</span></span><span style="display:flex;"><span>                x, y <span style="color:#333">=</span> direction
+</span></span><span style="display:flex;"><span>                direction <span style="color:#333">=</span> [y, <span style="color:#333">-</span>x]
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">if</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;G&#39;</span>:
+</span></span><span style="display:flex;"><span>                pos[<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">+=</span> direction[<span style="color:#00d;font-weight:bold">0</span>]
+</span></span><span style="display:flex;"><span>                pos[<span style="color:#00d;font-weight:bold">1</span>] <span style="color:#333">+=</span> direction[<span style="color:#00d;font-weight:bold">1</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> direction <span style="color:#333">!=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">1</span>] <span style="color:#000;font-weight:bold">or</span> pos <span style="color:#333">==</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">0</span>]
+</span></span></code></pre></div><h2 id="complexity">Complexity</h2>
 <ul>
 <li><strong>Time:</strong> O(n) - iterate through each instruction once</li>
 <li><strong>Space:</strong> O(1) - only use fixed variables for position and direction</li>
@@ -215,19 +208,18 @@ To represent direction, we have two options:</p>
 <li><strong>Rotation:</strong> n×n orthogonal matrices
 <ul>
 <li>In our 2D solution, although we use simple pattern-based coordinate transformations to find the transformed (x,y), this is fundamentally a rotation problem around the origin that can be explained using linear algebra:
-<pre><code># General rotation matrix for angle θ (counterclockwise):
-⎡cos(θ)  -sin(θ)⎤ ⎡x⎤   ⎡x·cos(θ) - y·sin(θ)⎤
-⎣sin(θ)   cos(θ)⎦ ⎣y⎦ = ⎣x·sin(θ) + y·cos(θ)⎦
-
-# For θ = 90° (Left turn): cos(90°)=0, sin(90°)=1
-⎡0  -1⎤ ⎡x⎤   ⎡-y⎤
-⎣1   0⎦ ⎣y⎦ = ⎣ x⎦
-
-# For θ = -90° (Right turn): cos(-90°)=0, sin(-90°)=-1  
-⎡ 0   1⎤ ⎡x⎤   ⎡ y⎤
-⎣-1   0⎦ ⎣y⎦ = ⎣-x⎦
-</code></pre>
-</li>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># General rotation matrix for angle θ (counterclockwise):
+</span></span><span style="display:flex;"><span>⎡cos(θ)  -sin(θ)⎤ ⎡x⎤   ⎡x·cos(θ) - y·sin(θ)⎤
+</span></span><span style="display:flex;"><span>⎣sin(θ)   cos(θ)⎦ ⎣y⎦ = ⎣x·sin(θ) + y·cos(θ)⎦
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># For θ = 90° (Left turn): cos(90°)=0, sin(90°)=1
+</span></span><span style="display:flex;"><span>⎡0  -1⎤ ⎡x⎤   ⎡-y⎤
+</span></span><span style="display:flex;"><span>⎣1   0⎦ ⎣y⎦ = ⎣ x⎦
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># For θ = -90° (Right turn): cos(-90°)=0, sin(-90°)=-1  
+</span></span><span style="display:flex;"><span>⎡ 0   1⎤ ⎡x⎤   ⎡ y⎤
+</span></span><span style="display:flex;"><span>⎣-1   0⎦ ⎣y⎦ = ⎣-x⎦
+</span></span></code></pre></div></li>
 </ul>
 </li>
 <li><strong>Same logic:</strong> If direction changes after one cycle, robot forms closed path in finite steps</li>
@@ -237,91 +229,90 @@ To represent direction, we have two options:</p>
 <li>Replace <code>pos += direction * 1</code> with <code>pos += direction * step_length</code></li>
 </ul>
 <p><strong>3D Extension - Variable Step Lengths with X/Y/Z-Axis Rotations:</strong></p>
-<pre><code class="language-python">import math
-
-def isRobotBounded3D(instructions: str) -&gt; bool:
-    # Start facing +Y direction
-    direction = [0, 1, 0]
-    pos = [0, 0, 0]
-    
-    def rotate_around_z(vec, angle_deg):
-        &quot;&quot;&quot;
-        Rotate vector around z-axis using 3D rotation matrix:
-        ⎡cos(θ)  -sin(θ)   0⎤ ⎡x⎤   ⎡x*cos(θ) - y*sin(θ)⎤
-        ⎢sin(θ)   cos(θ)   0⎥ ⎢y⎥ = ⎢x*sin(θ) + y*cos(θ)⎥
-        ⎣  0        0      1⎦ ⎣z⎦   ⎣        z           ⎦
-        
-        Z-axis rotation only affects x,y coordinates, z remains unchanged
-        &quot;&quot;&quot;
-        angle = math.radians(angle_deg)  # Convert degrees to radians
-        cos_a, sin_a = math.cos(angle), math.sin(angle)
-        return [
-            vec[0] * cos_a - vec[1] * sin_a,  # new_x = x*cos(θ) - y*sin(θ)
-            vec[0] * sin_a + vec[1] * cos_a,  # new_y = x*sin(θ) + y*cos(θ)
-            vec[2]                            # new_z = z (unchanged)
-        ]
-    
-    def rotate_around_x(vec, angle_deg):
-        &quot;&quot;&quot;
-        Rotate vector around x-axis using 3D rotation matrix:
-        ⎡1    0       0   ⎤ ⎡x⎤   ⎡        x          ⎤
-        ⎢0  cos(θ) -sin(θ)⎥ ⎢y⎥ = ⎢y*cos(θ) - z*sin(θ)⎥
-        ⎣0  sin(θ)  cos(θ)⎦ ⎣z⎦   ⎣y*sin(θ) + z*cos(θ)⎦
-        
-        X-axis rotation only affects y,z coordinates, x remains unchanged
-        &quot;&quot;&quot;
-        angle = math.radians(angle_deg)  # Convert degrees to radians
-        cos_a, sin_a = math.cos(angle), math.sin(angle)
-        return [
-            vec[0],                            # new_x = x (unchanged)
-            vec[1] * cos_a - vec[2] * sin_a,   # new_y = y*cos(θ) - z*sin(θ)
-            vec[1] * sin_a + vec[2] * cos_a    # new_z = y*sin(θ) + z*cos(θ)
-        ]
-    
-    def rotate_around_y(vec, angle_deg):
-        &quot;&quot;&quot;
-        Rotate vector around y-axis using 3D rotation matrix:
-        ⎡ cos(θ)  0  sin(θ)⎤ ⎡x⎤   ⎡x*cos(θ) + z*sin(θ)⎤
-        ⎢   0     1    0   ⎥ ⎢y⎥ = ⎢        y           ⎥
-        ⎣-sin(θ)  0  cos(θ)⎦ ⎣z⎦   ⎣-x*sin(θ) + z*cos(θ)⎦
-        
-        Y-axis rotation only affects x,z coordinates, y remains unchanged
-        &quot;&quot;&quot;
-        angle = math.radians(angle_deg)  # Convert degrees to radians
-        cos_a, sin_a = math.cos(angle), math.sin(angle)
-        return [
-            vec[0] * cos_a + vec[2] * sin_a,   # new_x = x*cos(θ) + z*sin(θ)
-            vec[1],                            # new_y = y (unchanged)
-            -vec[0] * sin_a + vec[2] * cos_a   # new_z = -x*sin(θ) + z*cos(θ)
-        ]
-    
-    for c in instructions:
-        if c == 'L':  # Yaw left 90° (around z-axis)
-            direction = rotate_around_z(direction, 90)
-        elif c == 'R':  # Yaw right 90° (around z-axis)
-            direction = rotate_around_z(direction, -90)
-        elif c == 'U':  # Pitch up 90° (around x-axis)
-            direction = rotate_around_x(direction, 90)
-        elif c == 'D':  # Pitch down 90° (around x-axis)
-            direction = rotate_around_x(direction, -90)
-        elif c == 'T':  # Roll left 90° (around y-axis)
-            direction = rotate_around_y(direction, 90)
-        elif c == 'S':  # Roll right 90° (around y-axis)
-            direction = rotate_around_y(direction, -90)
-        elif c.isdigit():  # Numbers represent step length
-            step_length = int(c)
-            for i in range(3):
-                pos[i] += direction[i] * step_length
-    
-    initial_direction = [0, 1, 0]
-    direction_changed = any(abs(direction[i] - initial_direction[i]) &gt; 0.001 for i in range(3))
-    at_origin = all(abs(pos[i]) &lt; 0.001 for i in range(3))
-    
-    return direction_changed or at_origin
-
-# Example: &quot;L2UT3DS1&quot; means Yaw left, move 2, pitch Up, roll left, move 3, pitch Down, roll right, move 1
-</code></pre>
-<p><strong>Key Insight:</strong> In any dimension with discrete rotations, the fundamental bounded condition remains the same regardless of step size.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">math</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">isRobotBounded3D</span>(instructions: <span style="color:#007020">str</span>) <span style="color:#333">-&gt;</span> <span style="color:#007020">bool</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#888"># Start facing +Y direction</span>
+</span></span><span style="display:flex;"><span>    direction <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">1</span>, <span style="color:#00d;font-weight:bold">0</span>]
+</span></span><span style="display:flex;"><span>    pos <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">0</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">rotate_around_z</span>(vec, angle_deg):
+</span></span><span style="display:flex;"><span>        <span style="background-color:#fff0f0">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        Rotate vector around z-axis using 3D rotation matrix:
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎡cos(θ)  -sin(θ)   0⎤ ⎡x⎤   ⎡x*cos(θ) - y*sin(θ)⎤
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎢sin(θ)   cos(θ)   0⎥ ⎢y⎥ = ⎢x*sin(θ) + y*cos(θ)⎥
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎣  0        0      1⎦ ⎣z⎦   ⎣        z           ⎦
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        Z-axis rotation only affects x,y coordinates, z remains unchanged
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        angle <span style="color:#333">=</span> math<span style="color:#333">.</span>radians(angle_deg)  <span style="color:#888"># Convert degrees to radians</span>
+</span></span><span style="display:flex;"><span>        cos_a, sin_a <span style="color:#333">=</span> math<span style="color:#333">.</span>cos(angle), math<span style="color:#333">.</span>sin(angle)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> [
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> cos_a <span style="color:#333">-</span> vec[<span style="color:#00d;font-weight:bold">1</span>] <span style="color:#333">*</span> sin_a,  <span style="color:#888"># new_x = x*cos(θ) - y*sin(θ)</span>
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> sin_a <span style="color:#333">+</span> vec[<span style="color:#00d;font-weight:bold">1</span>] <span style="color:#333">*</span> cos_a,  <span style="color:#888"># new_y = x*sin(θ) + y*cos(θ)</span>
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">2</span>]                            <span style="color:#888"># new_z = z (unchanged)</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">rotate_around_x</span>(vec, angle_deg):
+</span></span><span style="display:flex;"><span>        <span style="background-color:#fff0f0">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        Rotate vector around x-axis using 3D rotation matrix:
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎡1    0       0   ⎤ ⎡x⎤   ⎡        x          ⎤
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎢0  cos(θ) -sin(θ)⎥ ⎢y⎥ = ⎢y*cos(θ) - z*sin(θ)⎥
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎣0  sin(θ)  cos(θ)⎦ ⎣z⎦   ⎣y*sin(θ) + z*cos(θ)⎦
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        X-axis rotation only affects y,z coordinates, x remains unchanged
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        angle <span style="color:#333">=</span> math<span style="color:#333">.</span>radians(angle_deg)  <span style="color:#888"># Convert degrees to radians</span>
+</span></span><span style="display:flex;"><span>        cos_a, sin_a <span style="color:#333">=</span> math<span style="color:#333">.</span>cos(angle), math<span style="color:#333">.</span>sin(angle)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> [
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">0</span>],                            <span style="color:#888"># new_x = x (unchanged)</span>
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">1</span>] <span style="color:#333">*</span> cos_a <span style="color:#333">-</span> vec[<span style="color:#00d;font-weight:bold">2</span>] <span style="color:#333">*</span> sin_a,   <span style="color:#888"># new_y = y*cos(θ) - z*sin(θ)</span>
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">1</span>] <span style="color:#333">*</span> sin_a <span style="color:#333">+</span> vec[<span style="color:#00d;font-weight:bold">2</span>] <span style="color:#333">*</span> cos_a    <span style="color:#888"># new_z = y*sin(θ) + z*cos(θ)</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">rotate_around_y</span>(vec, angle_deg):
+</span></span><span style="display:flex;"><span>        <span style="background-color:#fff0f0">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        Rotate vector around y-axis using 3D rotation matrix:
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎡ cos(θ)  0  sin(θ)⎤ ⎡x⎤   ⎡x*cos(θ) + z*sin(θ) ⎤
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎢   0     1    0   ⎥ ⎢y⎥ = ⎢        y           ⎥
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        ⎣-sin(θ)  0  cos(θ)⎦ ⎣z⎦   ⎣-x*sin(θ) + z*cos(θ)⎦
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        Y-axis rotation only affects x,z coordinates, y remains unchanged
+</span></span></span><span style="display:flex;"><span><span style="background-color:#fff0f0">        &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        angle <span style="color:#333">=</span> math<span style="color:#333">.</span>radians(angle_deg)  <span style="color:#888"># Convert degrees to radians</span>
+</span></span><span style="display:flex;"><span>        cos_a, sin_a <span style="color:#333">=</span> math<span style="color:#333">.</span>cos(angle), math<span style="color:#333">.</span>sin(angle)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> [
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> cos_a <span style="color:#333">+</span> vec[<span style="color:#00d;font-weight:bold">2</span>] <span style="color:#333">*</span> sin_a,   <span style="color:#888"># new_x = x*cos(θ) + z*sin(θ)</span>
+</span></span><span style="display:flex;"><span>            vec[<span style="color:#00d;font-weight:bold">1</span>],                            <span style="color:#888"># new_y = y (unchanged)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#333">-</span>vec[<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> sin_a <span style="color:#333">+</span> vec[<span style="color:#00d;font-weight:bold">2</span>] <span style="color:#333">*</span> cos_a   <span style="color:#888"># new_z = -x*sin(θ) + z*cos(θ)</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">for</span> c <span style="color:#000;font-weight:bold">in</span> instructions:
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">if</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;L&#39;</span>:  <span style="color:#888"># Yaw left 90° (around z-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_z(direction, <span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;R&#39;</span>:  <span style="color:#888"># Yaw right 90° (around z-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_z(direction, <span style="color:#333">-</span><span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;U&#39;</span>:  <span style="color:#888"># Pitch up 90° (around x-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_x(direction, <span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;D&#39;</span>:  <span style="color:#888"># Pitch down 90° (around x-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_x(direction, <span style="color:#333">-</span><span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;T&#39;</span>:  <span style="color:#888"># Roll left 90° (around y-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_y(direction, <span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;S&#39;</span>:  <span style="color:#888"># Roll right 90° (around y-axis)</span>
+</span></span><span style="display:flex;"><span>            direction <span style="color:#333">=</span> rotate_around_y(direction, <span style="color:#333">-</span><span style="color:#00d;font-weight:bold">90</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">elif</span> c<span style="color:#333">.</span>isdigit():  <span style="color:#888"># Numbers represent step length</span>
+</span></span><span style="display:flex;"><span>            step_length <span style="color:#333">=</span> <span style="color:#007020">int</span>(c)
+</span></span><span style="display:flex;"><span>            <span style="color:#080;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#00d;font-weight:bold">3</span>):
+</span></span><span style="display:flex;"><span>                pos[i] <span style="color:#333">+=</span> direction[i] <span style="color:#333">*</span> step_length
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    initial_direction <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>, <span style="color:#00d;font-weight:bold">1</span>, <span style="color:#00d;font-weight:bold">0</span>]
+</span></span><span style="display:flex;"><span>    direction_changed <span style="color:#333">=</span> <span style="color:#007020">any</span>(<span style="color:#007020">abs</span>(direction[i] <span style="color:#333">-</span> initial_direction[i]) <span style="color:#333">&gt;</span> <span style="color:#60e;font-weight:bold">0.001</span> <span style="color:#080;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#00d;font-weight:bold">3</span>))
+</span></span><span style="display:flex;"><span>    at_origin <span style="color:#333">=</span> <span style="color:#007020">all</span>(<span style="color:#007020">abs</span>(pos[i]) <span style="color:#333">&lt;</span> <span style="color:#60e;font-weight:bold">0.001</span> <span style="color:#080;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#00d;font-weight:bold">3</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">return</span> direction_changed <span style="color:#000;font-weight:bold">or</span> at_origin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#888"># Example: &#34;L2UT3DS1&#34; means Yaw left, move 2, pitch Up, roll left, move 3, pitch Down, roll right, move 1</span>
+</span></span></code></pre></div><p><strong>Key Insight:</strong> In any dimension with discrete rotations, the fundamental bounded condition remains the same regardless of step size.</p>
 
 
 
@@ -329,7 +320,7 @@ def isRobotBounded3D(instructions: str) -&gt; bool:
   
 <nav class="post-nav">
   <span class="nav-prev"></span>
-  <span class="nav-next"></span>
+  <span class="nav-next"><a href="/leetcode/how-many-numbers-are-smaller-than-the-current-number/">How Many Numbers Are Smaller Than the Current Number</a> &rarr;</span>
 </nav>
 
 
@@ -350,13 +341,7 @@ def isRobotBounded3D(instructions: str) -&gt; bool:
 
 
 
-
-
-
-
-
-
-<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@%3cnil%3e/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
 
 
 
