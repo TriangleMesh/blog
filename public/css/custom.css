@@ -1,4 +1,81 @@
 /* =============================================================================
+   Fixed Sidebar Layout & Responsive Design
+   ============================================================================= */
+
+/* Fixed Left Sidebar Configuration */
+.masthead {
+  position: fixed !important;
+  top: 30px !important;
+  left: calc(50% - 480px) !important; /* Center align: 50% - (960px/2) */
+  height: calc(100vh - 60px) !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+}
+
+/* Main Content Area Adjustments */
+.main {
+  margin-left: calc(50% - 220px) !important; /* Center align: 50% - (960px/2) + 260px */
+  min-height: 100vh !important;
+  padding-top: 32px !important;
+  border-left: none !important; /* Remove original border */
+}
+
+/* Fixed Sidebar Separator Line */
+.masthead::after {
+  content: '';
+  position: absolute;
+  right: 0; /* Right edge of masthead */
+  top: 5px; /* Top margin for visual spacing */
+  bottom: 10px; /* Bottom margin for visual spacing */
+  width: 3px;
+  background-color: black;
+  z-index: 1001;
+}
+
+/* Desktop Layout Optimizations */
+@media screen and (min-width: 961px) {
+  body {
+    padding: 0 !important; /* Remove default body padding */
+  }
+}
+
+/* Medium Screen Protection (iPad & small desktops) */
+@media screen and (max-width: 1200px) {
+  .masthead {
+    left: 10px !important; /* Simple left offset for smaller screens */
+  }
+  
+  .main {
+    margin-left: 280px !important; /* Adjust main content accordingly */
+  }
+}
+
+/* Mobile Responsive Layout */
+@media screen and (max-width: 960px) {
+  /* Restore original layout for mobile */
+  .masthead {
+    position: static !important;
+    height: auto !important;
+    overflow-y: visible !important;
+    z-index: auto !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  
+  .main {
+    margin-left: 0 !important;
+    min-height: auto !important;
+    padding-top: auto !important;
+    border-left: none !important;
+  }
+  
+  /* Hide separator line on mobile */
+  .masthead::after {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
    Code Styling - Clean and Simple
    ============================================================================= */
 
