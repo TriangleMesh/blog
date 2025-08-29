@@ -127,7 +127,22 @@
 </ul>
 <p>This is an easy problem that&rsquo;s very suitable for interviews as it allows you to demonstrate multiple solution approaches with different complexities.</p>
 <h2 id="brute-force">Brute Force</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
 </span></span><span style="display:flex;"><span>        rst <span style="color:#333">=</span> []
 </span></span><span style="display:flex;"><span>        count <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>
@@ -138,7 +153,9 @@
 </span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(count)
 </span></span><span style="display:flex;"><span>            count <span style="color:#333">=</span> <span style="color:#00d;font-weight:bold">0</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
-</span></span></code></pre></div><h3 id="complexity">Complexity</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="complexity">Complexity</h3>
 <ul>
 <li>Time complexity: <code>O(n²)</code></li>
 <li>Space complexity: <code>O(n)</code></li>
@@ -152,7 +169,22 @@
 <li>Create a hash map: value → count of smaller numbers</li>
 <li>For each element in the original array, lookup its count from the hash map</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
 </span></span><span style="display:flex;"><span>        sorted_nums <span style="color:#333">=</span> <span style="color:#007020">sorted</span>(nums)
 </span></span><span style="display:flex;"><span>        d <span style="color:#333">=</span> {}
@@ -163,7 +195,9 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
 </span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(d[n])
 </span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
-</span></span></code></pre></div><h3 id="complexity-1">Complexity</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="complexity-1">Complexity</h3>
 <ul>
 <li>Time complexity: <code>O(n log n)</code></li>
 <li>Space complexity: <code>O(n)</code></li>
@@ -177,7 +211,23 @@
 <li>Convert frequencies to cumulative counts (prefix sum)</li>
 <li>For each element, lookup its count of smaller numbers directly from the array</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Solution</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">smallerNumbersThanCurrent</span>(self, nums: List[<span style="color:#007020">int</span>]) <span style="color:#333">-&gt;</span> List[<span style="color:#007020">int</span>]:
 </span></span><span style="display:flex;"><span>        lst <span style="color:#333">=</span> [<span style="color:#00d;font-weight:bold">0</span>] <span style="color:#333">*</span> <span style="color:#00d;font-weight:bold">101</span>
 </span></span><span style="display:flex;"><span>        rst <span style="color:#333">=</span> []
@@ -189,7 +239,9 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">for</span> n <span style="color:#000;font-weight:bold">in</span> nums:
 </span></span><span style="display:flex;"><span>            rst<span style="color:#333">.</span>append(lst[n <span style="color:#333">-</span> <span style="color:#00d;font-weight:bold">1</span>] <span style="color:#080;font-weight:bold">if</span> n <span style="color:#333">&gt;=</span> <span style="color:#00d;font-weight:bold">1</span> <span style="color:#080;font-weight:bold">else</span> <span style="color:#00d;font-weight:bold">0</span>)
 </span></span><span style="display:flex;"><span>        <span style="color:#080;font-weight:bold">return</span> rst
-</span></span></code></pre></div><h3 id="complexity-2">Complexity</h3>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="complexity-2">Complexity</h3>
 <ul>
 <li>Time complexity: <code>O(n)</code></li>
 <li>Space complexity: <code>O(n)</code></li>

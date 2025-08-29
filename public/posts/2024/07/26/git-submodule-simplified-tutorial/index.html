@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56387&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -109,11 +109,25 @@
 <h3 id="adding-submodules-and-sub-repositories">Adding Submodules and Sub-repositories</h3>
 <ol>
 <li>Clone the main repository to your local machine:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git clone &lt;main_repo_url&gt;
-</span></span></code></pre></div></li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git clone &lt;main_repo_url&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>Add the submodule within the main module:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule add &lt;submodule_url&gt; &lt;submodule_repo_name&gt;
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule add &lt;submodule_url&gt; &lt;submodule_repo_name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>If the submodule is successfully added, you will see a submodule folder inside the main module&rsquo;s directory and a <code>.gitmodules</code> file. Opening <code>.gitmodules</code>, you&rsquo;ll find the stored information about your submodule and sub-repository.</li>
 </ul>
 </li>
@@ -124,28 +138,63 @@
 <h4 id="updating-the-main-repository-based-on-the-sub-repository">Updating the Main Repository Based on the Sub-repository</h4>
 <ol>
 <li>If changes have been made to the submodule and pushed to the sub-repository, update the submodule in the main module with the following command:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule update --remote
-</span></span></code></pre></div>This will synchronize the local files with the latest submodule files.</li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule update --remote
+</span></span></code></pre></td></tr></table>
+</div>
+</div>This will synchronize the local files with the latest submodule files.</li>
 <li>Push the updates to the main repository</li>
 </ol>
 <h4 id="updating-the-sub-repository-based-on-main-repository">Updating the Sub-repository Based on Main Repository</h4>
 <ol>
 <li>In the local submodule directory, use the following command to update the submodule:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule update
-</span></span></code></pre></div>This will update the local files based on the files committed in the main repository.</li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule update
+</span></span></code></pre></td></tr></table>
+</div>
+</div>This will update the local files based on the files committed in the main repository.</li>
 <li>Push the updates to the sub-repository</li>
 </ol>
 <h3 id="removing-submodules-and-sub-repositories">Removing Submodules and Sub-repositories</h3>
 <ol>
 <li>Deinitialize the submodule:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule deinit &lt;submodule-name&gt;
-</span></span></code></pre></div></li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git submodule deinit &lt;submodule-name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>Remove the submodule directory:
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git rm -r &lt;submodule-name&gt;
-</span></span></code></pre></div></li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git rm -r &lt;submodule-name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 <li>Delete the submodule-related files in the <code>.git</code> directory (from the main module directory):
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rm -rf .git/modules/&lt;submodule-name&gt;
-</span></span></code></pre></div><strong>Note</strong>: You can use the <code>-f</code> option to force deletion if necessary.</li>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>rm -rf .git/modules/&lt;submodule-name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><strong>Note</strong>: You can use the <code>-f</code> option to force deletion if necessary.</li>
 </ol>
 
 

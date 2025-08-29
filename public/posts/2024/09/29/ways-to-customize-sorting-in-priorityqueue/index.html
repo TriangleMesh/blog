@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56387&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -108,7 +108,36 @@
 <p>By default, Java&rsquo;s <code>PriorityQueue</code> uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and their solutions.</p>
 <h3 id="1-implementing-the-comparable-interface">1. Implementing the <code>Comparable</code> Interface</h3>
 <p>Allow the object to implement the <code>Comparable</code> interface and override the <code>compareTo()</code> method to define the natural sorting order of the object. This is suitable for cases where a &ldquo;natural order&rdquo; exists.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">implements</span><span style="color:#bbb"> </span>Comparable<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">implements</span><span style="color:#bbb"> </span>Comparable<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#339;font-weight:bold">int</span><span style="color:#bbb"> </span>age;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#06b;font-weight:bold">Student</span>(<span style="color:#339;font-weight:bold">int</span><span style="color:#bbb"> </span>age)<span style="color:#bbb"> </span>{<span style="color:#bbb">
@@ -133,28 +162,79 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">while</span><span style="color:#bbb"> </span>(<span style="color:#333">!</span>students.<span style="color:#00c">isEmpty</span>())<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>System.<span style="color:#00c">out</span>.<span style="color:#00c">println</span>(students.<span style="color:#00c">poll</span>().<span style="color:#00c">getAge</span>());<span style="color:#bbb">  </span><span style="color:#888">// Output order: 18, 20, 22</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
-</span></span></span></code></pre></div><h3 id="2-using-the-comparator-interface">2. Using the <code>Comparator</code> Interface</h3>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-using-the-comparator-interface">2. Using the <code>Comparator</code> Interface</h3>
 <p>Pass a custom <code>Comparator</code> object when constructing the <code>PriorityQueue</code> to implement custom sorting logic.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>Comparator<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>Comparator<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#555;font-weight:bold">@Override</span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#339;font-weight:bold">int</span><span style="color:#bbb"> </span><span style="color:#06b;font-weight:bold">compare</span>(Student<span style="color:#bbb"> </span>s1,<span style="color:#bbb"> </span>Student<span style="color:#bbb"> </span>s2)<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-weight:bold">return</span><span style="color:#bbb"> </span>Integer.<span style="color:#00c">compare</span>(s1.<span style="color:#00c">getAge</span>(),<span style="color:#bbb"> </span>s2.<span style="color:#00c">getAge</span>());<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>});<span style="color:#bbb">
-</span></span></span></code></pre></div><h3 id="3-using-lambda-expressions">3. Using Lambda Expressions</h3>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-using-lambda-expressions">3. Using Lambda Expressions</h3>
 <p>In Java 8 and later versions, you can simplify the <strong><code>Comparator</code></strong> using lambda expressions.  Note that <code>Comparable</code> must be implemented inside the class and cannot be expressed using lambda expressions.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>(s1,<span style="color:#bbb"> </span>s2)<span style="color:#bbb"> </span><span style="color:#333">-&gt;</span><span style="color:#bbb"> </span>Integer.<span style="color:#00c">compare</span>(s1.<span style="color:#00c">getAge</span>(),<span style="color:#bbb"> </span>s2.<span style="color:#00c">getAge</span>())<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>);<span style="color:#bbb">
-</span></span></span></code></pre></div><p>Or:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Or:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Comparator.<span style="color:#00c">comparingInt</span>(Student::getAge)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>);<span style="color:#bbb">
-</span></span></span></code></pre></div><h3 id="note-handling-primitive-types-and-wrapper-types-in-comparisons">Note: Handling Primitive Types and Wrapper Types in Comparisons</h3>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="note-handling-primitive-types-and-wrapper-types-in-comparisons">Note: Handling Primitive Types and Wrapper Types in Comparisons</h3>
 <p>When performing comparisons, if you are using primitive types (e.g., <code>int</code>), you cannot directly call methods like <code>compareTo()</code> because primitive types do not have methods. You need to use wrapper types (e.g., <code>Integer</code>) or static comparison methods to handle this.</p>
 <h4 id="common-error-analysis">Common Error Analysis</h4>
 <p>The following code will lead to a compilation error:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">private</span><span style="color:#bbb"> </span><span style="color:#339;font-weight:bold">int</span><span style="color:#bbb"> </span>age;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#06b;font-weight:bold">Student</span>(<span style="color:#339;font-weight:bold">int</span><span style="color:#bbb"> </span>age)<span style="color:#bbb"> </span>{<span style="color:#bbb">
@@ -169,12 +249,29 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>((s1,<span style="color:#bbb"> </span>s2)<span style="color:#bbb"> </span><span style="color:#333">-&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">return</span><span style="color:#bbb"> </span>s1.<span style="color:#00c">getAge</span>().<span style="color:#00c">compareTo</span>(s2.<span style="color:#00c">getAge</span>());<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>});<span style="color:#bbb">
-</span></span></span></code></pre></div><p><strong>Error Reason:</strong> The <code>getAge()</code> method returns an <code>int</code>, which is a primitive type and cannot call the <code>compareTo()</code> method. The compiler will throw the error: &ldquo;<code>int cannot be dereferenced</code>.&rdquo;</p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Error Reason:</strong> The <code>getAge()</code> method returns an <code>int</code>, which is a primitive type and cannot call the <code>compareTo()</code> method. The compiler will throw the error: &ldquo;<code>int cannot be dereferenced</code>.&rdquo;</p>
 <h4 id="solutions">Solutions:</h4>
 <ol>
 <li><strong>Change <code>age</code> to the wrapper type <code>Integer</code>:</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">class</span> <span style="color:#b06;font-weight:bold">Student</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">private</span><span style="color:#bbb"> </span>Integer<span style="color:#bbb"> </span>age;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">public</span><span style="color:#bbb"> </span><span style="color:#06b;font-weight:bold">Student</span>(Integer<span style="color:#bbb"> </span>age)<span style="color:#bbb"> </span>{<span style="color:#bbb">
@@ -185,18 +282,38 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#080;font-weight:bold">return</span><span style="color:#bbb"> </span>age;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
-</span></span></span></code></pre></div><p>This way, <code>getAge()</code> returns an <code>Integer</code>, and you can call the <code>compareTo()</code> method.</p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This way, <code>getAge()</code> returns an <code>Integer</code>, and you can call the <code>compareTo()</code> method.</p>
 <ol start="2">
 <li><strong>Use the <code>Integer.compare(int x, int y)</code> method without modifying the <code>age</code> type:</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>((s1,<span style="color:#bbb"> </span>s2)<span style="color:#bbb"> </span><span style="color:#333">-&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>((s1,<span style="color:#bbb"> </span>s2)<span style="color:#bbb"> </span><span style="color:#333">-&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">return</span><span style="color:#bbb"> </span>Integer.<span style="color:#00c">compare</span>(s1.<span style="color:#00c">getAge</span>(),<span style="color:#bbb"> </span>s2.<span style="color:#00c">getAge</span>());<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>});<span style="color:#bbb">
-</span></span></span></code></pre></div><p>Or:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>a<span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Or:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>PriorityQueue<span style="color:#333">&lt;</span>Student<span style="color:#333">&gt;</span><span style="color:#bbb"> </span>students<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>a<span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">new</span><span style="color:#bbb"> </span>PriorityQueue<span style="color:#333">&lt;&gt;</span>(<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>Comparator.<span style="color:#00c">comparingInt</span>(Student::getAge)<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>);<span style="color:#bbb">
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 
 
   <footer>

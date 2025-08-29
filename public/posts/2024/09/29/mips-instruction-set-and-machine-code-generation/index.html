@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56387&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -139,8 +139,15 @@
 <h3 id="r-type-instructions">R-type Instructions</h3>
 <p><strong>R-type instructions</strong> are used for operations between <strong>registers</strong>, where both operands and the result are stored in registers. They are commonly used for arithmetic and logical operations.</p>
 <h4 id="format">Format:</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | rd (5 bits) | shamt (5 bits) | funct (6 bits) |
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | rd (5 bits) | shamt (5 bits) | funct (6 bits) |
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong>opcode</strong>: The operation code, fixed as <code>000000</code>.</li>
 <li><strong>rs</strong>: Source register 1.</li>
 <li><strong>rt</strong>: Source register 2.</li>
@@ -159,13 +166,27 @@
 <li><strong>funct</strong>: <code>100000</code> (Addition)</li>
 </ul>
 <p><strong>Machine code:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000000 01000 01001 10000 00000 100000
-</span></span></code></pre></div><p><strong>Hexadecimal representation:</strong> <code>0x01098020</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000000 01000 01001 10000 00000 100000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Hexadecimal representation:</strong> <code>0x01098020</code></p>
 <h3 id="i-type-instructions">I-type Instructions</h3>
 <p><strong>I-type instructions</strong> are used for operations between <strong>registers</strong> and <strong>immediate values</strong>, or for <strong>loading and storing</strong> memory operations. These instructions contain a 16-bit immediate value or address offset.</p>
 <h4 id="format-1">Format:</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | immediate (16 bits) |
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | immediate (16 bits) |
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong>opcode</strong>: The operation code, specifying the instruction type.</li>
 <li><strong>rs</strong>: Source register or base register.</li>
 <li><strong>rt</strong>: Destination register.</li>
@@ -180,8 +201,15 @@
 <li><strong>immediate</strong>: <code>0000000000001010</code> (binary for 10)</li>
 </ul>
 <p><strong>Machine code:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>001000 00000 01000 0000000000001010
-</span></span></code></pre></div><p><strong>Hexadecimal representation:</strong> <code>0x2008000A</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>001000 00000 01000 0000000000001010
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Hexadecimal representation:</strong> <code>0x2008000A</code></p>
 <p><strong>Note:</strong> While the assembly format for <code>addi $t0, $0, 10</code> places the destination register <code>$t0</code> before the source register <code>$0</code>, the machine code is generated in the order <code>opcode | rs | rt | immediate</code>, where the source register (<code>rs</code>) comes before the destination register (<code>rt</code>). This design difference is based on architectural considerations.</p>
 <h4 id="example-2-lw-t0-4-t1">Example 2: <code>lw $t0, 4($t1)</code></h4>
 <p>This instruction loads a word from the address <code>$t1 + 4</code> into <code>$t0</code>.</p>
@@ -192,13 +220,27 @@
 <li><strong>immediate</strong>: <code>0000000000000100</code> (binary for 4)</li>
 </ul>
 <p><strong>Machine code:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>100011 01001 01000 0000000000000100
-</span></span></code></pre></div><p><strong>Hexadecimal representation:</strong> <code>0x8D280004</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>100011 01001 01000 0000000000000100
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Hexadecimal representation:</strong> <code>0x8D280004</code></p>
 <h3 id="j-type-instructions">J-type Instructions</h3>
 <p><strong>J-type instructions</strong> are used for unconditional jumps to a specified address.</p>
 <h4 id="format-2">Format:</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | address (26 bits) |
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | address (26 bits) |
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong>opcode</strong>: The operation code, indicating a jump instruction.</li>
 <li><strong>address</strong>: The target address (excluding the upper 4 bits and lower 2 bits).</li>
 </ul>
@@ -209,13 +251,27 @@
 <li><strong>address</strong>: <code>00000000010000000000000000</code></li>
 </ul>
 <p><strong>Machine code:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000010 00000000010000000000000000
-</span></span></code></pre></div><p><strong>Hexadecimal representation:</strong> <code>0x08000000</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000010 00000000010000000000000000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Hexadecimal representation:</strong> <code>0x08000000</code></p>
 <h3 id="branch-instructions">Branch Instructions</h3>
 <p><strong>Branch instructions</strong> are used for conditional jumps and are commonly found in control flow for conditions and loops.</p>
 <h4 id="format-3">Format:</h4>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | offset (16 bits) |
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>| opcode (6 bits) | rs (5 bits) | rt (5 bits) | offset (16 bits) |
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li><strong>opcode</strong>: The operation code, indicating the branch type (e.g., <code>beq</code>, <code>bne</code>).</li>
 <li><strong>rs</strong>: Source register 1.</li>
 <li><strong>rt</strong>: Source register 2.</li>
@@ -230,8 +286,15 @@
 <li><strong>offset</strong>: <code>0000000000000010</code> (assuming an offset of 2)</li>
 </ul>
 <p><strong>Machine code:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000100 01000 01001 0000000000000010
-</span></span></code></pre></div><p><strong>Hexadecimal representation:</strong> <code>0x11090002</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>000100 01000 01001 0000000000000010
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Hexadecimal representation:</strong> <code>0x11090002</code></p>
 
 
 

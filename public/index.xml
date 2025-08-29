@@ -62,7 +62,7 @@
       <link>http://localhost:1313/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</link>
       <pubDate>Sun, 29 Sep 2024 16:24:31 -0700</pubDate>
       <guid>http://localhost:1313/posts/2024/09/29/ways-to-customize-sorting-in-priorityqueue/</guid>
-      <description>By default, Java&amp;rsquo;s PriorityQueue uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and their solutions.&#xA;1. Implementing the Comparable Interface Allow the object to implement the Comparable interface and override the compareTo() method to define the natural sorting order of the object. This is suitable for cases where a &amp;ldquo;natural order&amp;rdquo; exists.&#xA;class Student implements Comparable&amp;lt;Student&amp;gt; { private int age; public Student(int age) { this.</description>
+      <description>By default, Java&amp;rsquo;s PriorityQueue uses natural ordering, but we can customize the sorting rules in several ways. This article will introduce three common methods and analyze possible errors and their solutions.&#xA;1. Implementing the Comparable Interface Allow the object to implement the Comparable interface and override the compareTo() method to define the natural sorting order of the object. This is suitable for cases where a &amp;ldquo;natural order&amp;rdquo; exists.&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 class Student implements Comparable&amp;lt;Student&amp;gt; { private int age; public Student(int age) { this.</description>
     </item>
     <item>
       <title>MIPS Instruction Set and Machine Code Generation</title>
@@ -83,7 +83,7 @@
       <link>http://localhost:1313/posts/2024/07/26/git-submodule-simplified-tutorial/</link>
       <pubDate>Fri, 26 Jul 2024 00:54:14 +0800</pubDate>
       <guid>http://localhost:1313/posts/2024/07/26/git-submodule-simplified-tutorial/</guid>
-      <description>For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the submodule&amp;rsquo;s GitHub repository as the sub-repository.&#xA;Adding Submodules and Sub-repositories Clone the main repository to your local machine: git clone &amp;lt;main_repo_url&amp;gt; Add the submodule within the main module: git submodule add &amp;lt;submodule_url&amp;gt; &amp;lt;submodule_repo_name&amp;gt; If the submodule is successfully added, you will see a submodule folder inside the main module&amp;rsquo;s directory and a .</description>
+      <description>For clarity, we will refer to the local main module as the main module, the main module&amp;rsquo;s GitHub repository as the main repository, the local submodule as the submodule, and the submodule&amp;rsquo;s GitHub repository as the sub-repository.&#xA;Adding Submodules and Sub-repositories Clone the main repository to your local machine: 1 git clone &amp;lt;main_repo_url&amp;gt; Add the submodule within the main module: 1 git submodule add &amp;lt;submodule_url&amp;gt; &amp;lt;submodule_repo_name&amp;gt; If the submodule is successfully added, you will see a submodule folder inside the main module&amp;rsquo;s directory and a .</description>
     </item>
     <item>
       <title>About</title>

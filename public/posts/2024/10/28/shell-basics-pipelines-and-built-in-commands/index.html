@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=56387&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -112,8 +112,15 @@
 <p>A shell is essentially an interface that facilitates interaction between the user and the operating system. When you input a command in the terminal, the shell parses it, translates it into commands or system calls that the operating system can understand, and finally interacts with the OS kernel through system call interfaces.</p>
 <p>When implementing a shell, the core task is to process the user’s input and handle each part accordingly.</p>
 <p>When a user inputs a command in the terminal, for example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf /path/to/directory
-</span></span></code></pre></div><p>We need to parse it into:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm -rf /path/to/directory
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We need to parse it into:</p>
 <ul>
 <li>Command: <code>rm</code></li>
 <li>Option: <code>-rf</code></li>
@@ -121,8 +128,15 @@
 </ul>
 <p>Each of these parts needs to be handled separately to execute the user’s intent correctly.</p>
 <p>Another example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat access.log | grep <span style="background-color:#fff0f0">&#34;404&#34;</span>
-</span></span></code></pre></div><p>This command involves a pipeline operation and should be parsed into two subcommands:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat access.log | grep <span style="background-color:#fff0f0">&#34;404&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This command involves a pipeline operation and should be parsed into two subcommands:</p>
 <ol>
 <li>
 <p>Subcommand 1: <code>cat access.log</code></p>
@@ -142,7 +156,21 @@
 <p>Here, the output of the first subcommand serves as the input to the second subcommand.</p>
 <h3 id="implementation-in-rust">Implementation in Rust</h3>
 <p>In Rust, you can split the user’s input command string by the pipe symbol <code>|</code> into multiple subcommands. Then, split each subcommand by spaces into the command and its arguments. Here’s a sample code:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">mut</span><span style="color:#bbb"> </span>commands<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>input.trim().split(<span style="color:#04d;background-color:#fff0f0">&#39;|&#39;</span>).peekable();<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">mut</span><span style="color:#bbb"> </span>commands<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>input.trim().split(<span style="color:#04d;background-color:#fff0f0">&#39;|&#39;</span>).peekable();<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">while</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#007020">Some</span>(subcommand)<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>commands.next()<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span><span style="color:#080;font-weight:bold">mut</span><span style="color:#bbb"> </span>parts<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>subcommand.trim().split_whitespace();<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#080;font-weight:bold">let</span><span style="color:#bbb"> </span>action<span style="color:#bbb"> </span><span style="color:#333">=</span><span style="color:#bbb"> </span>parts.next().unwrap();<span style="color:#bbb">
@@ -152,7 +180,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">        </span>_<span style="color:#bbb"> </span><span style="color:#333">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb"> </span><span style="color:#888">/* ... */</span><span style="color:#bbb"> </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
-</span></span></span></code></pre></div><p>In this structure:</p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this structure:</p>
 <ul>
 <li><code>commands</code> is an iterator of <code>subcommands</code> split by the pipe symbol.</li>
 <li><code>subcommand</code> is the current <code>subcommand</code> string being processed.</li>
@@ -162,8 +192,15 @@
 <h2 id="pipelines">Pipelines</h2>
 <h3 id="concept-of-pipelines">Concept of Pipelines</h3>
 <p>In a shell, you can use the pipe symbol | to pass the output of one command as the input to the next command. For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls | grep <span style="background-color:#fff0f0">&#34;Cargo&#34;</span>
-</span></span></code></pre></div><p>The execution process of this command is:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls | grep <span style="background-color:#fff0f0">&#34;Cargo&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The execution process of this command is:</p>
 <ol>
 <li><code>ls</code> lists all files in the current directory.</li>
 <li>The pipe <code>|</code> passes the output of <code>ls</code> to the <code>grep</code> command.</li>
@@ -182,7 +219,39 @@
 </ol>
 <h3 id="implementation-in-rust-1">Implementation in Rust</h3>
 <p>Using Rust’s standard library <code>Command</code> and <code>Stdio</code>, we can conveniently implement pipeline operations. Below is an example demonstrating how to connect two commands in Rust:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::process::{Command,<span style="color:#bbb"> </span>Stdio};<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::process::{Command,<span style="color:#bbb"> </span>Stdio};<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">fn</span> <span style="color:#06b;font-weight:bold">main</span>()<span style="color:#bbb"> </span>{<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Create the first command, setting stdout to a pipe
@@ -210,7 +279,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Output the result
 </span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span>println!(<span style="background-color:#fff0f0">&#34;</span><span style="background-color:#eee">{}</span><span style="background-color:#fff0f0">&#34;</span>,<span style="color:#bbb"> </span><span style="color:#007020">String</span>::from_utf8_lossy(<span style="color:#333">&amp;</span>output.stdout));<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
-</span></span></span></code></pre></div><h3 id="key-implementation-points">Key Implementation Points</h3>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="key-implementation-points">Key Implementation Points</h3>
 <ol>
 <li>
 <p><strong>Configure the input and output of child processes:</strong></p>
@@ -239,7 +310,28 @@
 <p>Therefore, these built-in commands need to be implemented directly within the shell to modify the shell process’s state.</p>
 <h3 id="code-implementation-example">Code Implementation Example</h3>
 <p>When processing user input commands, you can use a <code>match</code> statement to handle built-in commands specially. For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::env;<span style="color:#bbb">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::env;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">use</span><span style="color:#bbb"> </span>std::path::Path;<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#080;font-weight:bold">match</span><span style="color:#bbb"> </span>action<span style="color:#bbb"> </span>{<span style="color:#bbb">
@@ -256,7 +348,9 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#888">// Handle other commands
 </span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#bbb">    </span>_<span style="color:#bbb"> </span><span style="color:#333">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb"> </span><span style="color:#888">/* ... */</span><span style="color:#bbb"> </span>}<span style="color:#bbb">
 </span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
-</span></span></span></code></pre></div><p>In this example:</p>
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this example:</p>
 <ul>
 <li><code>env::set_current_dir</code> is used to change the current working directory.</li>
 <li>If the change fails, an error message is output.</li>

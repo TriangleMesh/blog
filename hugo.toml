@@ -60,8 +60,8 @@ fractions = false
 [markup.highlight]
 codeFences = true
 style = "colorful"
-lineNos = false
-lineNumbersInTable = false
+lineNos = true
+lineNumbersInTable = true
 noClasses = true
 tabWidth = 4
 guessSyntax = true
