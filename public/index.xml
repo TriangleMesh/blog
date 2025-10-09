@@ -88,9 +88,9 @@
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description> </description>
+      <description>👋 Hi, I&amp;rsquo;m Qingyun I’m a Computer Science student at The University of British Columbia who enjoys coding, collaborating, and building things that are useful and fun.&#xA;I get excited about projects where I can solve problems with others—whether that’s optimizing a system, exploring a new algorithm, or contributing to open-source tools.&#xA;💻 What I Do Right now, I’m a Software Engineer/Research Assistant on the BC ATUS Project. It’s a multi-year study and I contribute to the development of the iOS app used for the survey.</description>
     </item>
   </channel>
 </rss>
