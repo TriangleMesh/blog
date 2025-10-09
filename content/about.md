@@ -47,7 +47,7 @@ I like sharing what I learn. Writing things down helps me think more clearly, an
 
 Always open to chats about tech, open-source, or new ideas:  
 
-- **Email**: [qingyunqian2@gmail.com](mailto:qingyunqian2@gmail.com)  
+- **Email**: [trianglemeshq@gmail.com](mailto:trianglemeshq@gmail.com)  
 - **GitHub**: [github.com/TriangleMesh](https://github.com/TriangleMesh)  
 - **Blog**: [trianglemesh.github.io](https://trianglemesh.github.io/)  
 
