@@ -45,7 +45,7 @@ I like sharing what I learn. Writing things down helps me think more clearly, an
 
 ### 📫 Connect  
 
-Always open to chats about tech, open-source, or new ideas:  
+Always open to chats about tech, ocd pen-source, or new ideas:  
 
 - **Email**: [trianglemeshq@gmail.com](mailto:trianglemeshq@gmail.com)  
 - **GitHub**: [github.com/TriangleMesh](https://github.com/TriangleMesh)  
