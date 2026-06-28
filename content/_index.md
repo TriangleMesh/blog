@@ -14,7 +14,7 @@ title: Home
     </ul>
   </div>
   <div style="flex:0 0 auto; width:180px; text-align:center;">
-    <a href="https://github.com/TriangleMesh">
+    <a>
       <img src="/img/Qingyun_Qian.png" style="width:100%; display:block;" alt="Qingyun portrait" />
     </a>
     <div style="margin-top:10px; font-size:0.8em; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
