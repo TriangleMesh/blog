@@ -10,6 +10,16 @@
   height: calc(100vh - 60px) !important;
   overflow-y: auto !important;
   z-index: 1000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.masthead h1 {
+  margin-top: auto !important;
+}
+
+.masthead .menu {
+  margin-bottom: auto !important;
 }
 
 /* Main Content Area Adjustments */

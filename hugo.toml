@@ -1,6 +1,6 @@
 baseURL = 'https://TriangleMesh.github.io/'
 languageCode = 'en-us'
-title = 'Q'
+title = 'Qingyun Qian'
 theme = 'hugo-ivy'
 
 hasCJKLanguage = true
@@ -10,7 +10,10 @@ footnotereturnlinkcontents = "↩"
 [permalinks]
     posts = "/posts/:year/:month/:day/:slug/"
 
-
+# [[menu.main]]
+#     name = "Project"
+#     url = "/project/"
+#     weight = 1
 [[menu.main]]
     name = "Posts"
     url = "/posts/"
@@ -19,10 +22,7 @@ footnotereturnlinkcontents = "↩"
     name = "Leetcode"
     url = "/leetcode/"
     weight = 2
-# [[menu.main]]
-#     name = "Resource"
-#     url = "/resource/"
-#     weight = 2
+
 # [[menu.main]]
 #     name = "Categories"
 #     url = "/categories/"
@@ -31,17 +31,17 @@ footnotereturnlinkcontents = "↩"
 #     name = "Tags"
 #     url = "/tags/"
 #     weight = 4
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 3
+# [[menu.main]]
+#     name = "About"
+#     url = "/about/"
+#     weight = 3
     
 
 
 [params]
   # description abou this website
   description = ""
-  footer = "&copy; <a href='https://TriangleMesh.github.io/'>Q</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | since 2024"
+  footer = "&copy; <a href='https://TriangleMesh.github.io/'>Qingyun Qian</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | <a href='https://scholar.google.com/citations?user=g8avwkcAAAAJ&amp;hl=en'>Google Scholar</a> | <a href='https://www.linkedin.com/in/qingyun-q-669985208/'>LinkedIn</a> | since 2024"
 
   # highlightjsCDN = "//cdn.bootcss.com"
   # highlightjsLang = ["r", "yaml", "tex"]
