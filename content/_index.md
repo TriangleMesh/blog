@@ -15,7 +15,10 @@ title: Home
   </div>
   <div class="hero-photo" style="flex:0 0 auto; width:180px; text-align:center;">
     <a>
-      <img src="/img/Qingyun_Qian.png" style="width:100%; display:block;" alt="Qingyun portrait" />
+      <picture>
+        <source srcset="/img/Qingyun_Qian.webp" type="image/webp">
+        <img src="/img/Qingyun_Qian.png" style="width:100%; display:block;" alt="Qingyun portrait" />
+      </picture>
     </a>
     <div style="margin-top:10px; font-size:0.8em; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
       <a href="https://github.com/TriangleMesh">GitHub</a>
