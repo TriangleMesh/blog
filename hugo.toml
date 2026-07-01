@@ -40,7 +40,7 @@ footnotereturnlinkcontents = "↩"
 
 [params]
   # description abou this website
-  description = "CS undergrad at UBC<br>Research Assistant at UBC NLP Group"
+  description = "Undergrad at UBC CS<br>Research Assistant in the UBC NLP Group"
   footer = "&copy; <a href='https://TriangleMesh.github.io/'>Qingyun Qian</a> | <a href='https://github.com/TriangleMesh'>Github</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | <a href='https://scholar.google.com/citations?user=g8avwkcAAAAJ&amp;hl=en'>Google Scholar</a> | <a href='https://www.linkedin.com/in/qingyun-q-669985208/'>LinkedIn</a> | since 2024"
 
   # highlightjsCDN = "//cdn.bootcss.com"
