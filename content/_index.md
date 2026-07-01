@@ -3,9 +3,9 @@ title: Home
 ---
 
 
-<div style="min-height:calc(100vh - 52px); display:flex; align-items:center;">
-<div style="display:flex; gap:28px; align-items:center; width:100%;">
-  <div style="flex:1; min-width:0;">
+<div class="hero-section" style="min-height:calc(100vh - 52px); display:flex; flex-direction:column; justify-content:center; position:relative;">
+<div class="hero-container" style="display:flex; gap:28px; align-items:center; width:100%;">
+  <div class="hero-text" style="flex:1; min-width:0;">
     <p>I'm currently an undergraduate student at UBC and research assistant in the <a href="https://nlp.cs.ubc.ca/">UBC NLP Group</a>, advised by <a href="https://peterwestai.notion.site/">Peter West</a>. I'm interested in using our insights towards how human think, learn and develop to improve how models generate, reason, and evolve. My recent research interests include:</p>
     <ul>
       <li><strong>Creativity</strong>. Understanding how intelligent systems can generate genuinely novel ideas rather than converging toward consensus.</li>
@@ -13,7 +13,7 @@ title: Home
       <li><strong>Non-language communication/reasoning</strong>. Investigating forms of reasoning and conversation that extend beyond human language.</li>
     </ul>
   </div>
-  <div style="flex:0 0 auto; width:180px; text-align:center;">
+  <div class="hero-photo" style="flex:0 0 auto; width:180px; text-align:center;">
     <a>
       <img src="/img/Qingyun_Qian.png" style="width:100%; display:block;" alt="Qingyun portrait" />
     </a>
@@ -24,9 +24,12 @@ title: Home
     </div>
   </div>
 </div>
+<a href="#experience" class="scroll-indicator" aria-label="Scroll to content">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</a>
 </div>
 
----
+
 
 ### Experience
 
