@@ -20,8 +20,9 @@ title: Home
         <img src="/img/Qingyun_Qian.png" style="width:100%; display:block;" alt="Qingyun portrait" />
       </picture>
     </a>
-    <div style="margin-top:10px; font-size:0.8em; display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+    <div style="margin-top:10px; font-size:0.72em; display:flex; justify-content:center; gap:6px; flex-wrap:nowrap; white-space:nowrap;">
       <a href="https://github.com/TriangleMesh">GitHub</a>
+      <a href="https://x.com/qingyunqian?s=11">X/Twitter</a>
       <a href="mailto:trianglemeshq@gmail.com">Email</a>
       <a href="https://scholar.google.com/citations?user=g8avwkcAAAAJ&hl=en">Google Scholar</a>
     </div>
