@@ -1,3 +1,69 @@
+:root {
+  color-scheme: light;
+  --page-background: #fff;
+  --page-text: #000;
+  --muted-text: #666;
+  --menu-text: #333;
+  --menu-icon: #555;
+  --surface: #fff;
+  --border: #ddd;
+  --table-background: #f8f8f8;
+  --code-background: #f5f5f5;
+  --code-text: #24292e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page-background: #121212;
+    --page-text: #fff;
+    --muted-text: #bbb;
+    --menu-text: #fff;
+    --menu-icon: #fff;
+    --surface: #222;
+    --border: #555;
+    --table-background: #222;
+    --code-background: #2a2a2a;
+    --code-text: #fff;
+  }
+}
+
+html, body {
+  background-color: var(--page-background);
+  color: var(--page-text);
+}
+
+a {
+  color: var(--page-text);
+}
+
+.subtitle {
+  color: var(--muted-text);
+}
+
+.masthead, .main {
+  border-color: var(--page-text);
+}
+
+blockquote, table, table thead th {
+  border-color: var(--border);
+}
+
+thead, tfoot, tr:nth-child(even) {
+  background: var(--table-background);
+}
+
+/* Hugo's inline syntax colors use a light palette. Keep code blocks readable. */
+pre {
+  color-scheme: light;
+  background: #f5f5f5;
+  color: #24292e;
+}
+
+pre code {
+  box-shadow: none;
+}
+
 /* =============================================================================
    Fixed Sidebar Layout & Responsive Design
    ============================================================================= */
@@ -53,7 +119,7 @@
   top: 5px; /* Top margin for visual spacing */
   bottom: 10px; /* Bottom margin for visual spacing */
   width: 3px;
-  background-color: black;
+  background-color: var(--page-text);
   z-index: 1001;
 }
 
@@ -122,7 +188,7 @@
     line-height: 1 !important;
     font-size: 15px !important;
     margin-top: 0 !important;
-    color: #555 !important;
+    color: var(--menu-icon) !important;
   }
 
   #menu-label:hover, #menu-label:focus {
@@ -139,12 +205,12 @@
     display: none !important;
   }
 
-  /* Dropdown: white background so it's not transparent */
+  /* Dropdown: opaque background matching the active color scheme */
   #menu-check:checked ~ ul {
     display: block !important;
     margin-top: 8px !important;
-    background: #fff !important;
-    border: 1px solid #ddd !important;
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
     border-radius: 4px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
     min-width: 120px !important;
@@ -168,7 +234,7 @@
   .masthead .menu a {
     display: block !important;
     padding: 8px 16px !important;
-    color: #333 !important;
+    color: var(--menu-text) !important;
   }
 
   .main {
@@ -222,7 +288,7 @@
 }
 
 .scroll-indicator:hover {
-  color: #333;
+  color: var(--page-text);
 }
 
 @keyframes scroll-bounce {
@@ -279,12 +345,12 @@ h5 code,
 h6 code,
 .main code,
 body code {
-  background: #f5f5f5 !important;
+  background: var(--code-background) !important;
   border: none !important;
   border-radius: 4px !important;
   padding: 3px 6px !important;
   font-size: 0.9em !important;
-  color: #24292e !important;
+  color: var(--code-text) !important;
   font-weight: normal !important;
 }
 
