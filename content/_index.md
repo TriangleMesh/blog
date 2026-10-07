@@ -28,6 +28,19 @@ title: Home
     </div>
   </div>
 </div>
+<section class="news-section" aria-labelledby="news">
+  <h3 id="news">News</h3>
+  <ol class="news-timeline" role="list">
+    <li>
+      <time class="news-date" datetime="2026-10-07">Oct. 2026</time>
+      <p class="news-description">Selected for Lambda's Research Grant Program. Thank you, Lambda!</p>
+    </li>
+    <li>
+      <time class="news-date" datetime="2026-04-30">Apr. 2026</time>
+      <p class="news-description">Our paper <a href="https://arxiv.org/abs/2512.11883">Position: Universal Aesthetic Alignment Narrows Artistic Expression</a> was accepted as a Spotlight at ICML 2026! I'll be in Seoul July 6–11. Come say hi if you're around!</p>
+    </li>
+  </ol>
+</section>
 <a href="#experience" class="scroll-indicator" aria-label="Scroll to content">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
 </a>
