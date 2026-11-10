@@ -1,0 +1,22 @@
+<nav class="language-switcher" aria-label="{{ if eq .Language.Lang "zh" }}语言{{ else }}Language{{ end }}">
+  {{- $current := .Language.Lang -}}
+  {{- $translations := .AllTranslations -}}
+  {{- range $index, $site := sort .Sites "Language.Lang" "desc" -}}
+    {{- $lang := .Language.Lang -}}
+    {{- $label := index (dict "zh" "CN" "en" "EN") $lang -}}
+    {{- $target := .Home.RelPermalink -}}
+    {{- range $translations -}}
+      {{- if eq .Language.Lang $lang -}}
+        {{- $target = .RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $index }}
+  <span class="language-separator" aria-hidden="true">/</span>
+    {{- end -}}
+    {{- if eq $lang $current }}
+  <span lang="{{ .Language.LanguageCode }}" aria-label="{{ .Language.LanguageName }}" title="{{ .Language.LanguageName }}" aria-current="true">{{ $label }}</span>
+    {{- else }}
+  <a href="{{ $target }}" lang="{{ .Language.LanguageCode }}" hreflang="{{ .Language.LanguageCode }}" aria-label="{{ .Language.LanguageName }}" title="{{ .Language.LanguageName }}" rel="alternate">{{ $label }}</a>
+    {{- end -}}
+  {{- end }}
+</nav>
