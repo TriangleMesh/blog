@@ -2,6 +2,7 @@
 title = 'How Many Numbers Are Smaller Than the Current Number'
 date = 2025-08-26T18:13:35-07:00
 # draft = true
+aliases = ['/leetcode/how-many-numbers-are-smaller-than-the-current-number/']
 +++
 
 ## Problem Description

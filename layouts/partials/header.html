@@ -64,6 +64,9 @@
     <header class="masthead">
       {{ partialCached "tagline.html" . $section .Language.Lang }}
       {{ partial "menu.html" . }}
+      {{ with .Site.GetPage "/posts" }}
+      <a class="mobile-blog-link" href="{{ .RelPermalink }}">{{ if eq .Language.Lang "zh" }}博客{{ else }}Blog{{ end }}</a>
+      {{ end }}
       {{ partial "language-switcher.html" . }}
     </header>
 

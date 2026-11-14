@@ -1,0 +1,6 @@
+{{ with .Site.GetPage "/posts" }}
+<section class="home-blog" aria-labelledby="home-blog-heading">
+  <h3 id="home-blog-heading">{{ if eq .Language.Lang "zh" }}博客{{ else }}Blog{{ end }}</h3>
+  <p>{{ if eq .Language.Lang "zh" }}我也会写一些关于技术、学习和思考的文章。{{ else }}I also write about technology, learning, and ideas.{{ end }} <a href="{{ .RelPermalink }}">{{ if eq .Language.Lang "zh" }}阅读博客{{ else }}Read the blog{{ end }} <span aria-hidden="true">&rarr;</span></a></p>
+</section>
+{{ end }}

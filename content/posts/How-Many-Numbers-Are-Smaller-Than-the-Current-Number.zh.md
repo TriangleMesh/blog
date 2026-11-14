@@ -2,6 +2,7 @@
 title = '有多少小于当前数字的数字'
 date = 2025-08-26T18:13:35-07:00
 # draft = true
+aliases = ['/zh/leetcode/how-many-numbers-are-smaller-than-the-current-number/']
 +++
 
 ## 题目描述

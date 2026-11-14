@@ -1,6 +1,7 @@
 +++
 title = '困于环中的机器人'
 date = 2025-08-23T21:04:27-07:00
+aliases = ['/zh/leetcode/robot-bounded-in-circle/']
 +++
 
 ## 题目描述

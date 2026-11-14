@@ -165,6 +165,25 @@ pre code {
   margin-bottom: auto !important;
 }
 
+.mobile-blog-link {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .mobile-blog-link {
+    position: absolute;
+    top: 8px;
+    left: 40px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 4px 8px;
+    border-bottom: 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
 /* Independent language control in the upper-right utility area. */
 .language-switcher {
   position: fixed;
@@ -553,4 +572,21 @@ pre code *,
 .selected-project .project-resources a:hover,
 .selected-project .project-resources a:focus-visible {
   color: var(--page-text);
+}
+
+.home-blog {
+  margin-top: 48px;
+}
+
+.home-blog h3 {
+  margin: 0 0 12px;
+}
+
+.home-blog p {
+  margin: 0;
+}
+
+.home-blog a {
+  margin-left: 0.5em;
+  white-space: nowrap;
 }

@@ -1,3 +1,4 @@
 +++
-title = '文章'
+title = '博客'
+aliases = ['/zh/leetcode/']
 +++

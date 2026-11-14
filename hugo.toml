@@ -21,13 +21,9 @@ footnotereturnlinkcontents = "↩"
     languageName = 'English'
     weight = 1
 [[languages.en.menu.main]]
-    name = 'Posts'
+    name = 'Blog'
     pageRef = '/posts'
     weight = 1
-[[languages.en.menu.main]]
-    name = 'Leetcode'
-    pageRef = '/leetcode'
-    weight = 2
 
 [languages.zh]
     languageCode = 'zh-CN'
@@ -37,13 +33,9 @@ footnotereturnlinkcontents = "↩"
     description = 'UBC 计算机科学本科生<br>UBC NLP 研究组研究助理'
     footer = "&copy; <a href='https://TriangleMesh.github.io/'>Qingyun Qian</a> | <a href='https://github.com/TriangleMesh'>GitHub</a> | <a href='https://x.com/qingyunqian?s=11'>X/Twitter</a> | <a href='mailto:trianglemeshq@gmail.com'>Email</a> | <a href='https://scholar.google.com/citations?user=g8avwkcAAAAJ&amp;hl=en'>Google Scholar</a> | <a href='https://www.linkedin.com/in/qingyun-q-669985208/'>LinkedIn</a> | since 2024"
 [[languages.zh.menu.main]]
-    name = '文章'
+    name = '博客'
     pageRef = '/posts'
     weight = 1
-[[languages.zh.menu.main]]
-    name = '算法笔记'
-    pageRef = '/leetcode'
-    weight = 2
 
 # [[menu.main]]
 #     name = "Categories"

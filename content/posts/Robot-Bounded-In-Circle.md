@@ -1,6 +1,7 @@
 +++
 title = 'Robot Bounded in Circle'
 date = 2025-08-23T21:04:27-07:00
+aliases = ['/leetcode/robot-bounded-in-circle/']
 +++
 
 ## Problem Description
